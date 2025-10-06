@@ -31,12 +31,19 @@ input {
 }
 
 .botao-google {
-  width: 374px;
+  width: 375px;
   height: 55px;
+  font-size: 20px;
+  font-weight: 500;
   border: solid black 1px;
   border-radius: 20px;
   display: flex;
   align-items: center;
+   transition: 0.4s;
+}
+
+.botao-google:hover {
+  background-color: rgb(190, 190, 190);
 }
 
 .imagem-google {
@@ -48,7 +55,7 @@ input {
   height: 100%;
 }
 .botao-google p {
-  padding-left: 10px;
+  padding-left: 15px;
 }
 
 .espaco-ou {
@@ -100,6 +107,8 @@ input {
 .botao-entrar {
   border: solid black 1px;
   border-radius: 20px;
+  color: white;
+  font-weight: 600;
   background-color: #6b9ac4;
   width: 374px;
   height: 55px;

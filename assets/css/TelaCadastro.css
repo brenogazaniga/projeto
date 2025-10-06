@@ -33,7 +33,6 @@ div img {
   height: 55px;
   font-size: 20px;
   font-weight: 500;
-  padding-left: 10px;
   transition: 0.4s;
 }
 
@@ -42,6 +41,15 @@ div img {
 }
 .botao-google p {
   padding-left: 15px;
+}
+
+.imagem-google {
+  padding-left: 10px;
+  height: 50%;
+}
+.imagem-google img {
+  width: 100%;
+  height: 100%;
 }
 
 .espaco-ou {
