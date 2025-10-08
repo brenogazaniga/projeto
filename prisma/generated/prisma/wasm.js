@@ -127,7 +127,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\4553581115\\Desktop\\Projeto TCC CEDUP\\projeto\\prisma\\generated\\prisma",
+      "value": "/project/workspace/prisma/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -136,16 +136,16 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "debian-openssl-1.1.x",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\4553581115\\Desktop\\Projeto TCC CEDUP\\projeto\\prisma\\schema.prisma",
+    "sourceFilePath": "/project/workspace/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../..",
@@ -155,7 +155,7 @@ const config = {
     "db"
   ],
   "activeProvider": "sqlite",
-  "postinstall": false,
+  "postinstall": true,
   "inlineDatasources": {
     "db": {
       "url": {
