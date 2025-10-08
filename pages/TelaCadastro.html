@@ -7,35 +7,108 @@
     <title>Cadastro | EQUILIBRA</title>
   </head>
   <body>
-    <form class="bloco-cadastro">
-      <button class="botao-google">
+    <form class="bloco-cadastro" id="formCadastro">
+      <button class="botao-google" type="button">
         <div class="imagem-google">
           <img src="../assets/img/imagemGoogle.svg" />
         </div>
-        <p>Continuar com o google</p>
+        <p>Continuar com o Google</p>
       </button>
+
       <div class="espaco-ou">
         <p>ou</p>
       </div>
-      <input placeholder="Nome" class="escrever-informacoes" />
-      <div class="espaco-caixas-texto"></div>
-      <input placeholder="Email" class="escrever-informacoes" type="email"/>
-      <div class="espaco-caixas-texto"></div>
+
       <input
+        id="nome"
+        placeholder="Nome"
+        class="escrever-informacoes"
+        type="text"
+        required
+      />
+      <div class="espaco-caixas-texto"></div>
+
+      <input
+        id="email"
+        placeholder="Email"
+        class="escrever-informacoes"
+        type="email"
+        required
+      />
+      <div class="espaco-caixas-texto"></div>
+
+      <input
+        id="senha"
         type="password"
         placeholder="Crie sua senha"
         class="escrever-informacoes"
+        required
       />
       <div class="espaco-caixas-texto"></div>
+
       <input
+        id="confirmarSenha"
         type="password"
-        placeholder="Inserir sua senha novamente"
+        placeholder="Insira sua senha novamente"
         class="escrever-informacoes"
+        required
       />
       <div class="espaco-botao-criar"></div>
+
       <button type="submit" class="botao-criar">
         <p>Criar</p>
       </button>
+
+      <p
+        id="mensagem"
+        style="text-align: center; margin-top: 10px; font-weight: bold"
+      ></p>
     </form>
+
+    <script>
+      document
+        .getElementById("formCadastro")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const nome = document.getElementById("nome").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const senha = document.getElementById("senha").value;
+          const confirmarSenha =
+            document.getElementById("confirmarSenha").value;
+          const mensagem = document.getElementById("mensagem");
+
+          // Verifica se as senhas são iguais
+          if (senha !== confirmarSenha) {
+            mensagem.textContent = "⚠️ As senhas não coincidem.";
+            mensagem.style.color = "red";
+            return;
+          }
+
+          // Envia para o backend
+          try {
+            const resposta = await fetch("/usuarios", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ nome, email, senha }),
+            });
+
+            const dados = await resposta.json();
+
+            if (resposta.ok) {
+              mensagem.textContent = "✅ " + dados.mensagem;
+              mensagem.style.color = "green";
+              document.getElementById("formCadastro").reset();
+            } else {
+              mensagem.textContent =
+                "❌ " + (dados.mensagem || "Erro ao criar usuário");
+              mensagem.style.color = "red";
+            }
+          } catch (err) {
+            mensagem.textContent = "⚠️ Erro ao conectar com o servidor.";
+            mensagem.style.color = "red";
+          }
+        });
+    </script>
   </body>
 </html>

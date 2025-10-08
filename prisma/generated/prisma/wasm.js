@@ -155,7 +155,6 @@ const config = {
     "db"
   ],
   "activeProvider": "sqlite",
-  "postinstall": true,
   "inlineDatasources": {
     "db": {
       "url": {
