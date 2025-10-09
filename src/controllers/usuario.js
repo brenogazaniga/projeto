@@ -1,13 +1,14 @@
 const { Router } = require("express");
 const { db } = require("../db");
+const { seguranca } = require("../auth");
 const rotaUsuario = Router();
 
-rotaUsuario.get("/usuarios", async (req, res) => {
+rotaUsuario.get("/api/usuarios", seguranca, async (req, res) => {
   const usuarios = await db.usuario.findMany();
   res.send(usuarios);
 });
 
-rotaUsuario.post("/usuarios", async (req, res) => {
+rotaUsuario.post("/api/usuarios", async (req, res) => {
   try {
     const { nome, email, senha } = req.body;
     const novo_usuario = await db.usuario.create({
@@ -25,7 +26,7 @@ rotaUsuario.post("/usuarios", async (req, res) => {
   }
 });
 
-rotaUsuario.put("/usuarios/:id", async (req, res) => {
+rotaUsuario.put("/api/usuarios/:id", seguranca, async (req, res) => {
   try {
     const { nome, email, senha } = req.body;
     const id = req.params;
