@@ -19,3 +19,5 @@ function seguranca(req, res, next) {
     return;
   }
 }
+
+module.exports = { seguranca };
