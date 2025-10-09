@@ -19,6 +19,22 @@ rotaPaginas.get("/suporte", async (req, res) => {
   res.sendFile(path.join(__dirname, "../../pages/suporte.html"));
 });
 
+rotaPaginas.get("/sugestoes", async (req, res) => {
+  res.sendFile(path.join(__dirname, "../../pages/chatia.html"));
+});
+
+rotaPaginas.get("/cadastrar-horas", async (req, res) => {
+  res.sendFile(path.join(__dirname, "../../pages/TelaCdastroHoras.html"));
+});
+
+rotaPaginas.get("/estatisticas-gerais", async (req, res) => {
+  res.sendFile(path.join(__dirname, "../../pages/TelaMostrarGrafico.html"));
+});
+
+rotaPaginas.get("/configuracoes", async (req, res) => {
+  res.sendFile(path.join(__dirname, "../../pages/configs.html"));
+});
+
 module.exports = {
   rotaPaginas,
 };
