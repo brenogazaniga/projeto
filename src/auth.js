@@ -20,4 +20,22 @@ function seguranca(req, res, next) {
   }
 }
 
-module.exports = { seguranca };
+function redicionamento(req, res, next) {
+  const token = req.header("Authentication")?.replace("Bearer ", "");
+
+  if (!token) {
+    res.redirect("/login");
+    return;
+  }
+
+  try {
+    const decodificado = jwt.verify(token, chaveSecreta);
+    req.decodificado = decodificado;
+    next();
+    return;
+  } catch (err) {
+    res.redirect("/login");
+    return;
+  }
+}
+module.exports = { seguranca, redicionamento, chaveSecreta };
