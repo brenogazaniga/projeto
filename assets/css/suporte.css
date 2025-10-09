@@ -24,8 +24,12 @@ main {
   height: 123px;
   border: #6b9ac4 solid 5px;
   border-radius: 40px;
-  padding-left: 35px;
+
   background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 #perguntas {
@@ -36,6 +40,7 @@ main {
   flex-direction: column;
   gap: 26px;
   justify-content: center;
+  font-size: large;
 }
 
 #caixa_de_suporte {
@@ -55,6 +60,10 @@ main {
   border: #6b9ac4 solid 5px;
   border-radius: 40px;
   background-color: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center
+  ;
 }
 .caixa_de_texto {
   width: 538px;
