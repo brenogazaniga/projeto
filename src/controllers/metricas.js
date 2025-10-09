@@ -2,6 +2,7 @@ const { Router } = require("express");
 const { db } = require("../db");
 const rotaMetrica = Router();
 
+
 rotaMetrica.get("/metricas", async (req, res) => {
   const metricas = await db.metricas_diarias.findMany();
   res.send(metricas);
