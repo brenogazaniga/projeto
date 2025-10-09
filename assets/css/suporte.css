@@ -12,6 +12,13 @@ body {
   align-items: center;
 }
 
+main {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .pergunta {
   width: 260px;
   height: 123px;
