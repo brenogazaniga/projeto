@@ -20,8 +20,17 @@ function seguranca(req, res, next) {
   }
 }
 
+/**
+ * 
+ * @param {import("express").Request} req 
+ * @param {import("express").Response} res 
+ * @param {import("express").NextFunction} next 
+ * @returns 
+ */
 function redicionamento(req, res, next) {
-  const token = req.header("Authentication")?.replace("Bearer ", "");
+  let token = req.header("Authentication")?.replace("Bearer ", "");
+
+  token = token ? token : req.cookies.token
 
   if (!token) {
     res.redirect("/login");

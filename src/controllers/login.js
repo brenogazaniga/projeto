@@ -1,5 +1,7 @@
 const { Router } = require("express");
 const { db } = require("../db");
+const jwt = require("jsonwebtoken");
+const { chaveSecreta } = require("../auth");
 
 const rotaLogin = Router();
 
@@ -22,7 +24,9 @@ rotaLogin.post("/api/login", async (req, res) => {
       return;
     }
 
-    res.json({ sucesso: true });
+    const token = jwt.sign({ id: usuario.id }, chaveSecreta)
+    res.cookie('token', `${token}`, { maxAge: 3600000, httpOnly: true });
+    res.json({ sucesso: true, token });
   } catch (err) {
     console.error(err);
     res.status(500).json({ sucesso: false });
