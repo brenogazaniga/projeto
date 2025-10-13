@@ -35,7 +35,6 @@ rotaChatia.post("/api/chat", async (req, res) => {
           "stopSequences": [
             "Title"
           ],
-          maxOutputTokens: 100,
           "temperature": 1.0,
           "topP": 0.8,
           "topK": 10
