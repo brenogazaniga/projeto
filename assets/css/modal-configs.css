@@ -6,11 +6,12 @@
 
 .modal{
   width: 50%;
-  height: 45%;
+  height: fit-content;
   background-color: white;
   padding:30px;
   margin-left: 16vw;
   border-radius: 30px;
+  min-width: 720px;
     svg{
      width: 30px;
      height: auto;
@@ -44,11 +45,15 @@
   .inputs {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 0px 30px
   }
 
   input {
-    text-align: center;
-    width: 50%;
+    width: 100%;
+    max-width: 400px;
+    padding: 1.5rem 1rem;
+    height: 10px;
     border-radius: 5px;
     background-color: #EFEFEF;
   }

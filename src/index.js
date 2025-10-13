@@ -22,9 +22,4 @@ server.use(rotaMetrica);
 server.use(rotaPaginas);
 server.use(rotaLogin);
 
-<<<<<<< HEAD
 server.listen(3000, () => console.log("> Rodando"));
-=======
-server.use(rotaChatia);
-server.listen(3001, () => console.log("> Rodando"));
->>>>>>> cc2885c073a183a9ab782132c0977c17b2cab446
