@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { db } = require("../db");
+const { db } = require("../../src/db");
 const rotaChatia = Router();
 const API_KEY = "AIzaSyDgkFS61goKQXFqMfX1xLZ7FrdCx-Cx5Fs"
 
@@ -9,11 +9,6 @@ o site equilibra é um site visado a prevenção da sindrome de burnout. O usuar
 Com base nessas informações, o site cria cria gráficos visuais, recomedações para que o usuario melhore sua rotina   
 Responda APENAS perguntas relacionadas a esses temas.
 Se o usuário perguntar algo fora disso, diga educadamente que só pode falar sobre tecnologia.
-
-Metricas do usuario por dia:
-horas_lazer: 10,
-horas_trabalho: 4,
-horas_sono: 10,
 `
 
 rotaChatia.post("/api/chat", async (req, res) => {

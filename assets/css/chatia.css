@@ -122,10 +122,10 @@ main {
 }
 
 .chatia .conteudo {
-
   align-items: end;
-  justify-content: center;
+  justify-content: space-between;
   display: flex;
+  flex-direction: column;
 }
 
 .card{
@@ -175,4 +175,31 @@ main {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #354C60;
+}
+
+.mensagens{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 20px;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.mensagem{
+  border: solid #354C60 2px;
+  border-radius: 20px;
+  padding: 10px;
+  align-self: flex-end;
+  display: flex;
+}
+
+.chat {
+  border-bottom-left-radius: 0px;
+  align-self: flex-start;
+}
+
+.usuario {
+  border-bottom-right-radius: 0px;
+  align-self: flex-end;
 }
