@@ -277,17 +277,10 @@ cors@^2.8.5:
     object-assign "^4"
     vary "^1"
 
-<<<<<<< HEAD
-debug@^4.3.5, debug@^4.4.0:
+debug@^4.3.5, debug@^4.4.0, debug@4:
   version "4.4.3"
   resolved "https://registry.npmjs.org/debug/-/debug-4.4.3.tgz"
   integrity sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==
-=======
-debug@^4.3.5, debug@^4.4.0, debug@4:
-  version "4.4.1"
-  resolved "https://registry.npmjs.org/debug/-/debug-4.4.1.tgz"
-  integrity sha512-KcKCqiftBJcZr++7ykoDIEwSa3XWowTfNPo92BYxjXiyYEVrUQh2aLyhxBCwww+heortUFxEJYcRzosstTEBYQ==
->>>>>>> cc2885c073a183a9ab782132c0977c17b2cab446
   dependencies:
     ms "^2.1.3"
 

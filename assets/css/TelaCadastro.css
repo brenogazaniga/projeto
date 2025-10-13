@@ -1,3 +1,10 @@
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
   display: flex;
   width: 100vw;
@@ -6,11 +13,6 @@ body {
   justify-content: center;
   align-items: center;
   font-family: arial;
-}
-
-div img {
-  width: 100%;
-  height: 100%;
 }
 
 .bloco-cadastro {
@@ -22,58 +24,27 @@ div img {
   flex-direction: column;
   align-items: center;
   padding-top: 60px;
+  
+  h1{
+    margin-bottom: 40px;
+  }
 }
 
-.botao-google {
-  display: flex;
-  align-items: center;
-  border: solid 1px;
-  border-radius: 20px;
-  width: 375px;
-  height: 55px;
-  font-size: 20px;
-  font-weight: 500;
-  transition: 0.4s;
-}
-
-.botao-google div {
-  display: flex;
-}
-.botao-google p {
-  padding-left: 15px;
-}
-
-.imagem-google {
-  padding-left: 10px;
-  height: 50%;
-}
-.imagem-google img {
+input.escrever-informacoes {
   width: 100%;
-  height: 100%;
-}
-
-.espaco-ou {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 375px;
-  height: 80px;
-  font-size: 20px;
-}
-
-.escrever-informacoes {
-  width: 365px;
+  max-width: 400px;
   height: 55px;
   border: solid black 1px;
   border-radius: 20px;
   background-color: #d9d9d9;
   font-size: 16px;
-  padding-left: 10px;
+  padding-left: 10px; 
 }
 
 input::placeholder {
   color: black;
 }
+
 
 .espaco-caixas-texto {
   width: 375px;
@@ -103,8 +74,4 @@ input::placeholder {
 
 .botao-criar:hover {
   background: #38536b;
-}
-
-.botao-google:hover {
-  background-color: rgb(190, 190, 190);
 }
