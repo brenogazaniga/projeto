@@ -4,15 +4,15 @@ const path = require("path");
 const { redicionamento } = require("../auth");
 const rotaPaginas = Router();
 
-rotaPaginas.get("/", async (req, res) => {
+rotaPaginas.get("/", redicionamento, async (req, res) => {
   res.sendFile(path.join(__dirname, "../../pages/TelaIntrodutoria.html"));
 });
 
-rotaPaginas.get("/login", async (req, res) => {
+rotaPaginas.get("/login", redicionamento, async (req, res) => {
   res.sendFile(path.join(__dirname, "../../pages/TelaDeLogin.html"));
 });
 
-rotaPaginas.get("/cadastro", async (req, res) => {
+rotaPaginas.get("/cadastro", redicionamento, async (req, res) => {
   res.sendFile(path.join(__dirname, "../../pages/TelaCadastro.html"));
 });
 
@@ -24,15 +24,15 @@ rotaPaginas.get("/sugestoes", redicionamento, async (req, res) => {
   res.sendFile(path.join(__dirname, "../../pages/chatia.html"));
 });
 
-rotaPaginas.get("/cadastrar-horas", async (req, res) => {
+rotaPaginas.get("/cadastrar-horas", redicionamento, async (req, res) => {
   res.sendFile(path.join(__dirname, "../../pages/TelaCdastroHoras.html"));
 });
 
-rotaPaginas.get("/estatisticas-gerais", async (req, res) => {
+rotaPaginas.get("/estatisticas-gerais", redicionamento, async (req, res) => {
   res.sendFile(path.join(__dirname, "../../pages/TelaMostrarGrafico.html"));
 });
 
-rotaPaginas.get("/configuracoes", async (req, res) => {
+rotaPaginas.get("/configuracoes", redicionamento, async (req, res) => {
   res.sendFile(path.join(__dirname, "../../pages/configs.html"));
 });
 

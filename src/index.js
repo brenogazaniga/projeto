@@ -22,4 +22,4 @@ server.use(rotaMetrica);
 server.use(rotaPaginas);
 server.use(rotaLogin);
 
-server.listen(3001, () => console.log("> Rodando"));
+server.listen(3000, () => console.log("> Rodando"));
