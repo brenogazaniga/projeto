@@ -4,6 +4,7 @@ addEventListener("DOMContentLoaded", () => {
     .addEventListener("submit", async (e) => {
         const mensagem_user = document.getElementById("mensagem_input").value.trim();
         const conversa = document.querySelector(".mensagens")
+         e.preventDefault();
 
 
         const mensagem = document.createElement("div")
@@ -14,5 +15,6 @@ addEventListener("DOMContentLoaded", () => {
         console.log(mensagem_user)
 
         document.getElementById("mensagem_input").value = ''
+        conversa.scrollTop = conversa.scrollHeight
     })
 })
