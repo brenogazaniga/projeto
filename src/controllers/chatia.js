@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { db } = require("../../src/db");
+const { db } = require("../db");
 const rotaChatia = Router();
 const API_KEY = "AIzaSyDgkFS61goKQXFqMfX1xLZ7FrdCx-Cx5Fs"
 
