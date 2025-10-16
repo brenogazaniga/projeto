@@ -30,6 +30,7 @@ CREATE TABLE "Mensagens" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "texto" TEXT NOT NULL,
     "id_conversa" INTEGER NOT NULL,
+    "eh_ia" BOOLEAN NOT NULL,
     CONSTRAINT "Mensagens_id_conversa_fkey" FOREIGN KEY ("id_conversa") REFERENCES "Conversas" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 

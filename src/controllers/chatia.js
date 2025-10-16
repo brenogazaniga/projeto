@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const { db } = require("../db");
+const { seguranca } = require("../auth");
 const rotaChatia = Router();
 const API_KEY = "AIzaSyDgkFS61goKQXFqMfX1xLZ7FrdCx-Cx5Fs"
 
@@ -11,10 +12,11 @@ Responda APENAS perguntas relacionadas a esses temas.
 Se o usuário perguntar algo fora disso, diga educadamente que só pode falar sobre tecnologia.
 `
 
-rotaChatia.post("/api/chat", async (req, res) => {
+
+
+rotaChatia.post("/api/chat", seguranca, async (req, res) => {
   const userMessage = req.body.message;
 
-console.log("OIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
   const response = await fetch(
     "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent" ,
     {
@@ -44,10 +46,66 @@ console.log("OIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
   console.log(data)
   console.log(response.ok)
   const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sem resposta.";
-  res.json({ reply: text });
-  await db.mensagens
+  const conversa = await db.conversas.findFirst({
+    where: {
+      id_usuario: req.decodificado.id
+    }
+  })
+
+  if (!conversa) {
+    await db.conversas.create({
+      data: {
+        usuario: {
+          connect: {
+            id: req.decodificado.id
+          }
+        }
+      }
+    })
+  }
   
+  await db.mensagens.create({
+    data: {
+      eh_ia: false,
+      texto: userMessage,
+      conversa: {
+        connect: {
+          id_usuario: req.decodificado.id,
+          usuario: {
+            id: req.decodificado.id,
+          },
+        },
+      },
+    },
+  });
+
+  await db.mensagens.create({
+    data: {
+      eh_ia: true,
+      texto: text,
+      conversa: {
+        connect: {
+          id_usuario: req.decodificado.id,
+          usuario: {
+            id: req.decodificado.id
+          },
+        },
+      },
+    },
+  });
+  res.json({ reply: text });
+
 
 });
+
+rotaChatia.get("/api/conversas", async (req, res) => {
+  const conversas = await db.conversas.findMany({
+    include: {
+      mensagens: true
+    }
+  })
+
+  res.json(conversas)
+})
 
 module.exports = {rotaChatia}

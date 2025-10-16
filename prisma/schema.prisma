@@ -42,4 +42,5 @@ model Mensagens{
   texto String 
   conversa Conversas @relation(fields: [id_conversa], references: [id])
   id_conversa Int
+  eh_ia Boolean
   }
