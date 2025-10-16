@@ -8,6 +8,7 @@ const { rotaMetrica } = require("./controllers/metricas");
 const { rotaPaginas } = require("./controllers/paginas");
 const { rotaLogin } = require("./controllers/login");
 const { rotaChatia } = require("./controllers/chatia");
+const { db } = require("./db");
 
 const server = express();
 server.use(express.static(path.join(__dirname, "assets")));
@@ -24,3 +25,5 @@ server.use(rotaLogin);
 server.use(rotaChatia);
 
 server.listen(3000, () => console.log("> Rodando"));
+
+db.usuario.findMany ().then(usuarios => console.log(usuarios))
