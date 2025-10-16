@@ -21,6 +21,7 @@ rotaUsuario.post("/api/usuarios", async (req, res) => {
       res
       .status(400)
       .json({ mensagem: "Email já cadastrado"});
+      return
     }
 
     const novo_usuario = await db.usuario.create({

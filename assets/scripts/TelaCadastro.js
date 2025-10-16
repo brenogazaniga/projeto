@@ -29,13 +29,13 @@ document
       const dados = await resposta.json();
 
       if (resposta.ok) {
-        mensagem.textContent = "✅ " + dados.mensagem;
+        mensagem.textContent = dados.mensagem;
         mensagem.style.color = "green";
         document.getElementById("formCadastro").reset();
         window.location.assign("/login");
       } else {
         mensagem.textContent =
-          "❌ " + (dados.mensagem || "Erro ao criar usuário");
+          (dados.mensagem || "Erro ao criar usuário");
         mensagem.style.color = "red";
       }
     } catch (err) {
