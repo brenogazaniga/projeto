@@ -46,6 +46,7 @@ console.log("OIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
   const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sem resposta.";
   res.json({ reply: text });
   await db.mensagens
+  
 
 });
 
