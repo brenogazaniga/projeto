@@ -30,4 +30,5 @@ function oauthSignIn() {
   // Add form to page and submit it to open the OAuth 2.0 endpoint.
   document.body.appendChild(form);
   form.submit();
+  window.location.href = "/estatisticas-gerais";
 }

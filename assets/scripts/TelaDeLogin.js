@@ -35,5 +35,5 @@ async function login(email, senha) {
   const token = json.token;
   localStorage.setItem("token", token);
   console.log("direcionando");
-  window.location.href = "/suporte";
+  window.location.href = "/estatisticas-gerais";
 }

@@ -18,13 +18,13 @@ rotaPaginas.get("/cadastro", async (req, res) => {
 rotaPaginas.get("/suporte", async (req, res) => {
   res.sendFile(path.join(__dirname, "../../pages/suporte.html"));
 });
-
+ 
 rotaPaginas.get("/sugestoes", async (req, res) => {
   res.sendFile(path.join(__dirname, "../../pages/chatia.html"));
 });
 
 rotaPaginas.get("/cadastrar-horas", async (req, res) => {
-  res.sendFile(path.join(__dirname, "../../pages/TelaCdastroHoras.html"));
+  res.sendFile(path.join(__dirname, "../../pages/TelaCadastroHoras.html"));
 });
 
 rotaPaginas.get("/estatisticas-gerais", async (req, res) => {

@@ -12,7 +12,7 @@ document
 
     // Verifica se as senhas são iguais
     if (senha !== confirmarSenha) {
-      mensagem.textContent = "⚠️ As senhas não coincidem.";
+      mensagem.textContent = "As senhas não coincidem.";
       mensagem.style.color = "red";
       return;
     }
@@ -39,7 +39,7 @@ document
         mensagem.style.color = "red";
       }
     } catch (err) {
-      mensagem.textContent = "⚠️ Erro ao conectar com o servidor.";
+      mensagem.textContent = "Erro ao conectar com o servidor.";
       mensagem.style.color = "red";
     }
   });
