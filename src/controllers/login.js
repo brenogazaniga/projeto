@@ -14,13 +14,17 @@ rotaLogin.post("/api/login", async (req, res) => {
       where: { email },
     });
 
+    console.log(await db.usuario.findMany())
+    console.log({ email, senha })
+    console.log(usuario)
+
     if (!usuario) {
-      res.json({ sucesso: false, mensagem: "Usuario ou Senha invalidos" });
+      res.status(401).json({ sucesso: false, mensagem: "Usuario ou Senha invalidos" });
       return;
     }
 
     if (usuario.senha !== senha) {
-      res.json({ sucesso: false, mensagem: "Usuario ou Senha invalidos" });
+      res.status(401).json({ sucesso: false, mensagem: "Usuario ou Senha invalidos" });
       return;
     }
 

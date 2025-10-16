@@ -15,6 +15,26 @@ body {
   font-family: arial;
 }
 
+.carregando {
+  color: #38536b;
+  cursor: not-allowed;
+  svg {
+    width: 20px;
+    fill: #FFF;
+    animation: girar 5s ease infinite;
+  }
+}
+
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .bloco-cadastro {
   display: flex;
   background-color: #eff2f1;

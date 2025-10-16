@@ -10,7 +10,19 @@ rotaUsuario.get("/api/usuarios", seguranca, async (req, res) => {
 
 rotaUsuario.post("/api/usuarios", async (req, res) => {
   try {
-    const { nome, email, senha } = req.body;
+    const { nome, email, senha } = req.body
+    const usuario_existente = await db.usuario.findFirst({
+      where: {
+        email
+      }
+    })
+
+    if (usuario_existente) {
+      res
+      .status(400)
+      .json({ mensagem: "Email já cadastrado"});
+    }
+
     const novo_usuario = await db.usuario.create({
       data: {
         nome,
@@ -22,6 +34,7 @@ rotaUsuario.post("/api/usuarios", async (req, res) => {
       .status(201)
       .json({ mensagem: "Usuario criado com sucesso", id: novo_usuario.id });
   } catch (err) {
+    console.log(err)
     res.status(400).json({ menssagem: "Erro ao criar usuario", erro: err });
   }
 });

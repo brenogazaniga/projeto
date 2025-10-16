@@ -1,7 +1,6 @@
 const { Router } = require("express");
 const { db } = require("../db");
 const path = require("path");
-const { redicionamento } = require("../auth");
 const rotaPaginas = Router();
 
 rotaPaginas.get("/", async (req, res) => {
@@ -16,11 +15,11 @@ rotaPaginas.get("/cadastro", async (req, res) => {
   res.sendFile(path.join(__dirname, "../../pages/TelaCadastro.html"));
 });
 
-rotaPaginas.get("/suporte", redicionamento, async (req, res) => {
+rotaPaginas.get("/suporte", async (req, res) => {
   res.sendFile(path.join(__dirname, "../../pages/suporte.html"));
 });
 
-rotaPaginas.get("/sugestoes", redicionamento, async (req, res) => {
+rotaPaginas.get("/sugestoes", async (req, res) => {
   res.sendFile(path.join(__dirname, "../../pages/chatia.html"));
 });
 
