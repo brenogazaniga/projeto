@@ -14,7 +14,7 @@ Se o usuário perguntar algo fora disso, diga educadamente que só pode falar so
 rotaChatia.post("/api/chat", async (req, res) => {
   const userMessage = req.body.message;
 
-
+console.log("OIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
   const response = await fetch(
     "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent" ,
     {
@@ -40,11 +40,13 @@ rotaChatia.post("/api/chat", async (req, res) => {
       }),
     }
   );
-
   const data = await response.json();
+  console.log(data)
   console.log(response.ok)
   const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sem resposta.";
   res.json({ reply: text });
+  await db.mensagens
+
 });
 
 module.exports = {rotaChatia}

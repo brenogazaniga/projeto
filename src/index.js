@@ -21,5 +21,6 @@ server.use(rotaUsuario);
 server.use(rotaMetrica);
 server.use(rotaPaginas);
 server.use(rotaLogin);
+server.use(rotaChatia);
 
 server.listen(3000, () => console.log("> Rodando"));

@@ -16,6 +16,7 @@ model Usuario{
   email String
   senha String
   metricas Metricas_diarias[]
+  conversas Conversas?
 }
 
 model Metricas_diarias{
@@ -29,3 +30,16 @@ model Metricas_diarias{
   nota_refeicao Int
 }
 
+model Conversas{
+  id Int @id @default(autoincrement())
+  usuario Usuario @relation(fields: [id_usuario ], references: [id])
+  id_usuario Int @unique  
+  mensagens Mensagens[]
+}
+
+model Mensagens{
+  id Int @id @default(autoincrement())
+  texto String 
+  conversa Conversas @relation(fields: [id_conversa], references: [id])
+  id_conversa Int
+  }
