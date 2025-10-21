@@ -34,7 +34,7 @@ model Conversas{
   id Int @id @default(autoincrement())
   usuario Usuario @relation(fields: [id_usuario ], references: [id])
   id_usuario Int @unique  
-  mensagens Mensagens[]
+  mensagens Mensagens[]   
 }
 
 model Mensagens{
