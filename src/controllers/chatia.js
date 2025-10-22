@@ -2,7 +2,7 @@ const { Router } = require("express");
 const { db } = require("../db");
 const { seguranca } = require("../auth");
 const rotaChatia = Router();
-const API_KEY = "AIzaSyDgkFS61goKQXFqMfX1xLZ7FrdCx-Cx5Fs"
+const API_KEY = "AIzaSyB9WWATTL7ZDSsdculUxvPPgoBvAUT0iA8"
 
 const CONTEXTO = `
 Você é um assistente virtual do site Equilibra, equilibra é um projeto desenvolvido como TCC do curso tecnico de desenvlvimento de sistemas do cedup,
@@ -23,7 +23,8 @@ rotaChatia.post("/api/chat", seguranca, async (req, res) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-goog-api-key": API_KEY
+        "x-goog-api-key": API_KEY,
+        "Authentication": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzYwOTc4ODk5fQ.UZZjNXiarRrJ9qVDmeyEQ-tJI0Z7EKxK-2q6QXj0wbo"
     },
       body: JSON.stringify({
         
@@ -46,6 +47,8 @@ rotaChatia.post("/api/chat", seguranca, async (req, res) => {
   console.log(data)
   console.log(response.ok)
   const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sem resposta.";
+  console.log("ola");
+  
   const conversa = await db.conversas.findFirst({
     where: {
       id_usuario: req.decodificado.id
@@ -104,7 +107,7 @@ rotaChatia.get("/api/conversas", async (req, res) => {
       mensagens: true
     }
   })
-
+  console.log(res)
   res.json(conversas)
 })
 
