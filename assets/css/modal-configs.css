@@ -74,6 +74,15 @@
       color:white
     }
   }
+
+  .senha {
+    display: flex;
+    width: 100%;
+    .olho {
+      width: 7%;
+      height: auto;
+    }
+  }
 }
 
 .back-modal{

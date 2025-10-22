@@ -11,6 +11,7 @@ O **Equilibra** tem como objetivo principal **prevenir a Síndrome de Burnout** 
 
 A plataforma permite que o usuário **registre suas atividades diárias**, informando quantas horas dedicou a cada uma delas.  
 
+ 
 Com base nesses dados, o sistema **gera gráficos visuais e recomendações personalizadas**, ajudando o usuário a compreender seus hábitos e melhorar sua qualidade de vida.
 
 # ESCOLHA DO TEMA 💻
