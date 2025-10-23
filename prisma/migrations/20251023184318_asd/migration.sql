@@ -13,8 +13,7 @@ CREATE TABLE "Metricas_diarias" (
     "horas_sono" INTEGER NOT NULL,
     "horas_trabalho" INTEGER NOT NULL,
     "id_usuario" INTEGER NOT NULL,
-    "timestamp" DATETIME NOT NULL,
-    "nota_refeicao" INTEGER NOT NULL,
+    "timestamp" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT "Metricas_diarias_id_usuario_fkey" FOREIGN KEY ("id_usuario") REFERENCES "Usuario" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 

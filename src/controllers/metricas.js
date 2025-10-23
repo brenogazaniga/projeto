@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const { db } = require("../db");
+const { seguranca } = require("../auth");
 const rotaMetrica = Router();
 
 
@@ -8,17 +9,26 @@ rotaMetrica.get("/metricas", async (req, res) => {
   res.send(metricas);
 });
 
-rotaMetrica.post("/metricas", async (req, res) => {
+rotaMetrica.get("/metricas/usuario", seguranca, async (req, res) => {
+  const metricas = await db.metricas_diarias.findMany({
+    where: {
+      id_usuario: req.decodificado.id
+    }
+  });
+  res.send(metricas);
+});
+
+
+rotaMetrica.post("/metricas", seguranca, async (req, res) => {
   try {
     const {
       id,
       horas_lazer,
       horas_sono,
       horas_trabalho,
-      id_usuario,
-      timestamp,
-      nota_refeicao,
     } = req.body;
+    console.log({horas_lazer});
+    
     const nova_metrica = await db.metricas_diarias.create({
       data: {
         id,
@@ -27,11 +37,9 @@ rotaMetrica.post("/metricas", async (req, res) => {
         horas_trabalho,
         usuario: {
           connect: {
-            id: Number(id_usuario),
+            id: Number(req.decodificado.id),
           },
         },
-        timestamp: new Date(timestamp),
-        nota_refeicao,
       },
     });
     res.status(201).json({
