@@ -97,7 +97,7 @@ rotaChatia.post("/api/chat", seguranca, async (req, res) => {
     },
   });
   res.json({ reply: text });
-
+  await db.mensagens
 
 });
 

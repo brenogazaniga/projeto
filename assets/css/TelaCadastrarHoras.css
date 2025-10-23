@@ -90,6 +90,11 @@ input {
   padding-bottom: 20px;
 }
 
+input[type="time"] {
+  display: flex;
+  justify-content: space-around;
+}
+
 .texto-atencao {
   display: flex;
   width: 100%;
