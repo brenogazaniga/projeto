@@ -81,4 +81,8 @@ Por fim, com todas essas etapas concluídas, o projeto ganhou forma e passou a u
 **JOÃO EDUARDO ANDRETTO**
 
 **MARCOS VINICIUS DOS SANTOS MEDEIRA**
+<<<<<<< HEAD
 #
+=======
+#
+>>>>>>> c728576d4dcac6cf1e998059a18088e29759972a
