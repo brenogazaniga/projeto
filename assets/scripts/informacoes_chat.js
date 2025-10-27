@@ -5,8 +5,7 @@ addEventListener("DOMContentLoaded", () => {
         event.preventDefault();
         const mensagem_user = document.getElementById("mensagem_input").value.trim();
         const conversa = document.querySelector(".mensagens")
-
-
+        
         const mensagem = document.createElement("div")
         mensagem.classList.add("mensagem")
         mensagem.classList.add("usuario")
@@ -19,7 +18,7 @@ addEventListener("DOMContentLoaded", () => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authentication": `Bearer ${token}`
+                "Authentication": `${token}`
             },
             body: JSON.stringify({
                 message: mensagem_user
@@ -31,11 +30,12 @@ addEventListener("DOMContentLoaded", () => {
             resposta.classList.add("mensagem");
             resposta.classList.add("chat");
             resposta.innerHTML = chatiaresposta.reply;
-
+            
             conversa.appendChild(resposta);
-        
+            
         })
         
+        console.log(token)
         document.getElementById("mensagem_input").value = ''
         conversa.scrollTop = conversa.scrollHeight
     })
