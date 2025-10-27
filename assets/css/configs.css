@@ -40,10 +40,11 @@ main#configuracoes {
             border-top: solid 1px;
             gap: 10px;
 
-            button {
-                width: 20px;
+            img {
+                width:25px;
                 height: auto;
-            }
+                cursor: pointer;
+            } 
         }
 
         .informacoes {

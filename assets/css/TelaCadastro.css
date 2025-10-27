@@ -15,6 +15,22 @@ body {
   font-family: arial;
 }
 
+#back-arrow {
+  width: 30px;
+  height: auto;
+  position: absolute; 
+  top: 62px;   
+  left: 60px; 
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 10;
+  transition: opacity 0.4s;
+}
+
+#back-arrow:hover {
+  opacity: 0.7;
+}
+
 .carregando {
   color: #38536b;
   cursor: not-allowed;
@@ -36,6 +52,7 @@ body {
 }
 
 .bloco-cadastro {
+  position: relative;
   display: flex;
   background-color: #eff2f1;
   width: 493px;
