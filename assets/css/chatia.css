@@ -202,3 +202,21 @@ main {
   border-bottom-right-radius: 0px;
   align-self: flex-end;
 }
+
+.placeholder {
+  color: #777;
+  text-align: center;
+  margin: 18px auto;
+  font-style: italic;
+  padding: 0 12px;
+}
+
+.mensagem-input {
+  border: solid #6B9AC4 3px;
+  border-radius: 15px;
+  background-color: #D9D9D9;
+  width: 80%;
+  font-size: 20px;
+  padding-left: 10px;
+  padding: 0.5rem;
+}
