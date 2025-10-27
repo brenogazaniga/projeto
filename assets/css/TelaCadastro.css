@@ -51,14 +51,14 @@ body {
 }
 
 input.escrever-informacoes {
-  width: 100%;
+  width: 375px;
   max-width: 400px;
   height: 55px;
   border: solid black 1px;
   border-radius: 20px;
   background-color: #d9d9d9;
   font-size: 16px;
-  padding-left: 10px; 
+  padding-left: 22px; 
 }
 
 input::placeholder {
@@ -95,3 +95,25 @@ input::placeholder {
 .botao-criar:hover {
   background: #38536b;
 }
+
+.senha {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%; 
+    input {
+      padding-right: 44px;
+    }
+    .olho {
+      position: absolute;
+      right: 70px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 22px;      
+      height: auto;
+      cursor: pointer;
+      z-index: 5;
+      user-select: none;
+      pointer-events: auto;
+    }
+  }

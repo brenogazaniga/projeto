@@ -90,6 +90,16 @@ input {
   padding-bottom: 20px;
 }
 
+input[type="time"] {
+  display: flex;
+  justify-content: space-around;
+}
+
+.cadastrar{
+  min-width: 70px;
+  min-height: 30px;
+}
+
 .texto-atencao {
   display: flex;
   width: 100%;
