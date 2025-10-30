@@ -81,11 +81,47 @@ main#configuracoes {
     }
 }
 
+
+.hamburguer {
+    display: none;
+    width: 50px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+
+    cursor: pointer;
+    background-color: rgb(72, 72, 119);
+    fill: #FFF;
+    border-radius: 50%;
+}
+
+aside {
+    transition: transform 0.5 ease;
+}
+
 @media screen and (max-width: 992px) {
   aside {
-    transform: translateX(-100%);
-    display: none;
+        transform: translateX(-100%);
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .hamburguer {
+        display: flex;
+        z-index: 999999;
+    }
+
+    aside#barra-lateral.show ~ .hamburguer  {
+        left: 100px;
+    }
+}
+
+aside#barra-lateral.show {
+    transform: translateX(0%);
     width: 0;
     position: absolute;
-  }
+    left: 0;
+    top: 0;
+    display: flex;
 }
