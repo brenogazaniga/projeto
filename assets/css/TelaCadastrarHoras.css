@@ -7,6 +7,7 @@
 }
 
 .menu-itens-direita {
+  min-width: 838px;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -156,7 +157,7 @@ input[type="time"] {
   font-size: 22px;
 }
 
-@media screen and (max-width: 1449px) {
+@media screen and (max-width: 1560px) {
   aside {
     transform: translateX(-100%);
     display: none;
