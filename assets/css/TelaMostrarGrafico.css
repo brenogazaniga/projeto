@@ -71,3 +71,12 @@ body {
 .aviso p{
     font-weight: 700;
 }
+
+@media screen and (max-width: 1335px) {
+  aside {
+    transform: translateX(-100%);
+    display: none;
+    width: 0;
+    position: absolute;
+  }
+}

@@ -10,36 +10,36 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Usuario{
-  id Int @id @default(autoincrement())
-  nome String
-  email String
-  senha String
-  metricas Metricas_diarias[]
+model Usuario {
+  id        Int                @id @default(autoincrement())
+  nome      String
+  email     String
+  senha     String
+  metricas  Metricas_diarias[]
   conversas Conversas?
 }
 
-model Metricas_diarias{
-  id Int @id @default(autoincrement())
-  horas_lazer Int
-  horas_sono Int
+model Metricas_diarias {
+  id             Int      @id @default(autoincrement())
+  horas_lazer    Int
+  horas_sono     Int
   horas_trabalho Int
-  id_usuario Int 
-  usuario Usuario @relation(fields: [id_usuario], references: [id])
-  timestamp DateTime @default(now())
+  id_usuario     Int
+  usuario        Usuario  @relation(fields: [id_usuario], references: [id])
+  timestamp      DateTime @default(now())
 }
 
-model Conversas{
-  id Int @id @default(autoincrement())
-  usuario Usuario @relation(fields: [id_usuario ], references: [id])
-  id_usuario Int @unique  
-  mensagens Mensagens[]   
+model Conversas {
+  id         Int         @id @default(autoincrement())
+  usuario    Usuario     @relation(fields: [id_usuario], references: [id])
+  id_usuario Int         @unique
+  mensagens  Mensagens[]
 }
 
-model Mensagens{
-  id Int @id @default(autoincrement())
-  texto String 
-  conversa Conversas @relation(fields: [id_conversa], references: [id])
+model Mensagens {
+  id          Int       @id @default(autoincrement())
+  texto       String
+  conversa    Conversas @relation(fields: [id_conversa], references: [id])
   id_conversa Int
-  eh_ia Boolean
-  }
+  eh_ia       Boolean
+}
