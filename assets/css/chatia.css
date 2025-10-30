@@ -37,6 +37,7 @@ main {
   border-bottom-right-radius : 40px;
   text-align: justify;
   background-color: white;
+  position: relative;
   
 }
 
@@ -183,6 +184,8 @@ main {
   gap: 20px;
   width: 100%;
   overflow-y: auto;
+  justify-self: center;
+
 }
 
 .mensagem{
@@ -191,6 +194,7 @@ main {
   padding: 10px;
   align-self: flex-end;
   display: flex;
+
 }
 
 .chat {
@@ -204,11 +208,19 @@ main {
 }
 
 .placeholder {
+  
   color: #777;
   text-align: center;
   margin: 18px auto;
   font-style: italic;
   padding: 0 12px;
+  margin: auto;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+  width: 95%;
 }
 
 .mensagem-input {
@@ -219,4 +231,9 @@ main {
   font-size: 20px;
   padding-left: 10px;
   padding: 0.5rem;
+}
+
+input:disabled, button:disabled {
+  cursor: not-allowed !important;
+  filter: brightness(0.5);
 }

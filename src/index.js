@@ -8,6 +8,7 @@ const { rotaMetrica } = require("./controllers/metricas");
 const { rotaPaginas } = require("./controllers/paginas");
 const { rotaLogin } = require("./controllers/login");
 const { rotaChatia } = require("./controllers/chatia");
+
 const { db } = require("./db");
 
 const server = express();
