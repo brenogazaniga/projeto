@@ -24,6 +24,10 @@ server.use(rotaMetrica);
 server.use(rotaPaginas);
 server.use(rotaLogin);
 server.use(rotaChatia);
+server.get("/teste", (req, res) => {
+    res.sendFile(path.join(__dirname, "../pages/oauth.html"));
+    
+});
 
 // NOVA ROTA: Buscar horas de um usuário (adicione isso)
 server.get("/api/horas", async (req, res) => {

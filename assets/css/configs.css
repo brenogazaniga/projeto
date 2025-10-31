@@ -81,11 +81,35 @@ main#configuracoes {
     }
 }
 
-@media screen and (max-width: 992px) {
-  aside {
-    transform: translateX(-100%);
+
+.hamburguer {
     display: none;
-    width: 0;
-    position: absolute;
-  }
+    width: 50px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+
+    cursor: pointer;
+    background-color: rgb(72, 72, 119);
+    fill: #FFF;
+    border-radius: 50%;
+}
+
+aside {
+    transition: transform 0.5 ease;
+}
+
+@media screen and (max-width: 992px) {
+  aside#barra-lateral {
+        transform: translateX(-100%);
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 9990;
+        transition: transform 300ms ease;
+    }
+}
+
+aside#barra-lateral.show {
+    transform: translateX(0%);
 }

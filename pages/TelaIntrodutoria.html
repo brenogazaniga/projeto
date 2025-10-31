@@ -33,5 +33,102 @@
         </svg>
       </a>
     </div>
+
+    <script>
+function oauthSignIn() {
+  var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
+  var form = document.createElement('form');
+  form.setAttribute('method', 'GET');
+  form.setAttribute('action', oauth2Endpoint);
+
+  var params = {
+    client_id: "YOUR_CLIENT_ID",               // <--- substitui
+    redirect_uri: "http://localhost:3000/oauth2callback", // <--- substitui pelo teu
+    response_type: 'token',                    // precisamos do access_token
+    scope: 'openid email profile',             // ESSENCIAL: pede email
+    include_granted_scopes: 'true',
+    state: 'pass-through value'
+  };
+
+  for (var p in params) {
+    var input = document.createElement('input');
+    input.setAttribute('type', 'hidden');
+    input.setAttribute('name', p);
+    input.setAttribute('value', params[p]);
+    form.appendChild(input);
+  }
+
+  document.body.appendChild(form);
+  form.submit();
+}
+
+// Coloque este script na página apontada por redirect_uri (ex: /oauth2callback)
+// Ele lê o fragmento da URL, extrai access_token e chama userinfo
+(function handleFragment() {
+  if (!location.hash) return;
+
+  // transforma "#access_token=XYZ&token_type=Bearer&..." em objeto
+  const frag = location.hash.substring(1);
+  const parts = frag.split('&').map(p => p.split('='));
+  const params = {};
+  parts.forEach(([k, v]) => { params[k] = v ? decodeURIComponent(v) : ''; });
+
+  console.log('Fragment params recebidos:', params);
+
+  const accessToken = params['access_token'];
+  const idToken = params['id_token']; // caso tenha pedido id_token também
+  const tokenType = params['token_type'];
+  const expiresIn = params['expires_in'];
+  console.log({
+    accessToken,
+    idToken,
+    tokenType,
+    expiresIn
+  })
+  
+  return
+
+  if (!accessToken) {
+    console.error('Nenhum access_token encontrado. Você pediu response_type=token?');
+    if (idToken) {
+      console.log('Encontrado id_token (mas userinfo precisa de access_token). Decodificando id_token apenas para debug:');
+      try {
+        const payload = JSON.parse(atob(idToken.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')));
+        console.log('id_token payload:', payload);
+        alert('id_token.email (apenas leitura no cliente): ' + payload.email);
+      } catch(e){ console.error('Erro ao decodificar id_token', e); }
+    }
+    return;
+  }
+
+  console.log('access_token:', accessToken, 'token_type:', tokenType, 'expires_in:', expiresIn);
+
+  // Faz a chamada ao userinfo
+  fetch('https://openidconnect.googleapis.com/v1/userinfo', {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + accessToken
+    }
+  })
+  .then(async res => {
+    if (!res.ok) {
+      const txt = await res.text();
+      console.error('Resposta userinfo não OK. status=', res.status, 'body=', txt);
+      throw new Error('Erro userinfo: ' + res.status + ' — ' + txt);
+    }
+    return res.json();
+  })
+  .then(profile => {
+    console.log('UserInfo OK:', profile);
+    alert('Email: ' + profile.email + '\nVerificado: ' + profile.email_verified);
+    // aqui você pode enviar profile.email ao servidor, etc.
+  })
+  .catch(err => {
+    console.error(err);
+    alert('Falha ao obter userinfo — vê console para detalhes.');
+  });
+})();
+</script>
+
   </body>
 </html>
