@@ -6,8 +6,7 @@
     <link rel="stylesheet" href="../assets/css/chatia.css" />
     <link rel="stylesheet" href="../assets/css/padrão-telas.css" />
     <script src="../assets/scripts/informacoes_chat.js"></script>
-    <script src="../assets/scripts/mensagem_vazia_sugestoes.js"></script>
-    <script src="../assets/scripts/recomendacoes.js"></script>
+    <script src="../assets/scripts/feedback_horas.js"></script>
     <title>Chat Ia</title>
   </head>
 
@@ -52,14 +51,10 @@
         </div>
 
         <div class="card card_sugestao_atividade">
-          <div class="titulo">SUGESTÃO COM BASE NA SUA ATIVIDADE RECENTE</div>
+          <div class="titulo">FEEDBACK DAS SUAS HORAS</div>
           <div class="conteudo">
-            Com base na sua atividade física registrada, sugerimos que você
-            incorpore exercícios de alongamento e fortalecimento muscular em sua
-            rotina semanal. Atividades como yoga ou pilates podem ajudar a
-            melhorar sua flexibilidade e reduzir o risco de lesões. Além disso,
-            considere variar seus exercícios para incluir tanto atividades
-            cardiovasculares quanto de resistência.
+            <p class="recomendacoes"></p>
+           
           </div>
         </div>
       </div>
@@ -83,5 +78,10 @@
         </div>
       </div>
     </main>
+<script>
+  window.onload = function() {
+    carregarFeedbackHoras();  // Chama a função para carregar o feedback automaticamente
+  };
+</script> 
   </body>
 </html>

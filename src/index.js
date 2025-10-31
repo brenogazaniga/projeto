@@ -25,6 +25,36 @@ server.use(rotaPaginas);
 server.use(rotaLogin);
 server.use(rotaChatia);
 
+// NOVA ROTA: Buscar horas de um usuário (adicione isso)
+server.get("/api/horas", async (req, res) => {
+  const userId = parseInt(req.query.userId);
+  if (!userId) {
+    return res.status(400).json({ error: "userId é obrigatório" });
+  }
+
+  try {
+    const metrica = await db.metricas_diarias.findFirst({
+      where: { id_usuario: userId },
+      orderBy: { timestamp: "desc" },
+    });
+
+    if (!metrica) {
+      return res
+        .status(404)
+        .json({ error: "Nenhuma métrica encontrada para este usuário" });
+    }
+
+    res.json({
+      horas_trabalho: metrica.horas_trabalho,
+      horas_lazer: metrica.horas_lazer,
+      horas_sono: metrica.horas_sono,
+    });
+  } catch (error) {
+    console.error("Erro ao buscar horas:", error);
+    res.status(500).json({ error: "Erro no servidor" });
+  }
+});
+
 server.listen(3000, () => console.log("> Rodando"));
 
-db.usuario.findMany ().then(usuarios => console.log(usuarios))
+db.usuario.findMany().then((usuarios) => console.log(usuarios));
