@@ -16,6 +16,7 @@ main{
   justify-content: center;
   align-items: center;
   width: 100%;
+  flex-direction: column;
 }
 #faq{
   border: solid #6b9ac4 5px;
@@ -54,8 +55,8 @@ main{
 
   }
   .wrap.maior {
-    img {
-      transform: rotate(180deg);
+    .img {
+      transform:rotateY(180de);
     }
   }
   
@@ -101,3 +102,14 @@ main{
   gap: 27px;
   overflow: auto; 
 }
+.email-link {
+  color: #0b66c3;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.email-link:hover {
+  color: #084b9f;
+}
+
+
