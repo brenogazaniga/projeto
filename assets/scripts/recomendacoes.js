@@ -24,22 +24,19 @@ server.use(rotaMetrica);
 server.use(rotaPaginas);
 server.use(rotaLogin);
 server.use(rotaChatia);
-server.get("/teste", (req, res) => {
-    res.sendFile(path.join(__dirname, "../pages/oauth.html"));
-    
-});
 
-// NOVA ROTA: Buscar horas de um usuário (adicione isso)
+// NOVA ROTA: Buscar horas de um usuário (ex: GET /api/horas?userId=1)
 server.get("/api/horas", async (req, res) => {
-  const userId = parseInt(req.query.userId);
+  const userId = parseInt(req.query.userId); // Pega o ID do usuário da URL
   if (!userId) {
     return res.status(400).json({ error: "userId é obrigatório" });
   }
 
   try {
-    const metrica = await db.metricas_diarias.findFirst({
-      where: { id_usuario: userId },
-      orderBy: { timestamp: "desc" },
+    // Busca a métrica mais recente do usuário (ajuste se for em outra tabela)
+    const metrica = await db.metrica.findFirst({
+      where: { userId: userId },
+      orderBy: { id: "desc" }, // Pega o último registro (assumindo que há um campo 'id')
     });
 
     if (!metrica) {
@@ -48,8 +45,9 @@ server.get("/api/horas", async (req, res) => {
         .json({ error: "Nenhuma métrica encontrada para este usuário" });
     }
 
+    // Retorna as horas em JSON
     res.json({
-      horas_trabalho: metrica.horas_trabalho,
+      horas_trabalhadas: metrica.horas_trabalhadas,
       horas_lazer: metrica.horas_lazer,
       horas_sono: metrica.horas_sono,
     });
@@ -61,4 +59,5 @@ server.get("/api/horas", async (req, res) => {
 
 server.listen(3000, () => console.log("> Rodando"));
 
+// Teste do banco (opcional, remove depois)
 db.usuario.findMany().then((usuarios) => console.log(usuarios));
