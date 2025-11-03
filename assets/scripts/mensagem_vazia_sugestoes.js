@@ -37,7 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   form.addEventListener("submit", (evt) => {
     evt.preventDefault();
-
     const texto = input.value.trim();
     if (texto === "") return;
     const nova = document.createElement("div");
@@ -46,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (mensagensContainer.contains(placeholder)) {
       mensagensContainer.removeChild(placeholder);
     }
-    mensagensContainer.appendChild(nova);
+   mensagensContainer.appendChild(nova);
     input.value = "";
     mensagensContainer.scrollTop = mensagensContainer.scrollHeight;
     atualizarPlaceholder();

@@ -102,6 +102,7 @@ main{
   gap: 27px;
   overflow: auto; 
 }
+<<<<<<< HEAD
 .email-link {
   color: #0b66c3;
   text-decoration: underline;
@@ -113,3 +114,20 @@ main{
 }
 
 
+=======
+
+@media screen and (max-width: 1275px) {
+   aside#barra-lateral {
+        transform: translateX(-100%);
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 9990;
+        transition: transform 300ms ease;
+    }
+}
+
+aside#barra-lateral.show {
+    transform: translateX(0%);
+}
+>>>>>>> 8521d136646b6bef018d3cdf349ae6285b872c8d
