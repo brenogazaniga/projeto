@@ -1,4 +1,11 @@
 
+function formatar(minutes) {
+  const hours = Math.floor(minutes / 60);
+  const mins = minutes % 60;
+  return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}`;
+} 
+
+
 async function pegardados() {
     const resposta =  await fetch("/metricas/usuario",{
         method: "GET",
@@ -9,12 +16,13 @@ async function pegardados() {
     return dados    
 } 
 
+
 function mostrarDados(dados) {
     const ctx = document.getElementById('graficoPizza').getContext('2d');
     const graficoPizza = new Chart(ctx, {
         type: 'pie',
         data: {
-            labels: ['Horas de Trabalho', 'Horas de Sono', 'Horas de Lazer'],
+            labels: ['Horas de Trabalho', 'Horas de Lazar', 'Horas de Sono'],
             datasets: [{
                 data: dados,
                 backgroundColor: [
@@ -37,10 +45,19 @@ function mostrarDados(dados) {
                         boxWidth: 30,
                         boxHeight: 20
                     }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: (context) => {
+                            const label = context.label || '';
+                            const valor = context.raw;
+                            return `${label}: ${formatar(valor)}`;
+                        }
+                    }
                 }
             }
         }
-    })   
+    });
 }
 
 pegardados().then((dados) => {
@@ -49,5 +66,6 @@ pegardados().then((dados) => {
         horas.horas_trabalho ,
         horas.horas_lazer ,
         horas.horas_sono 
-    ])
+    ])   
 })
+
