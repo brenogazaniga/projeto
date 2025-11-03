@@ -59,6 +59,10 @@ server.get("/api/horas", async (req, res) => {
   }
 });
 
+server.get("/teste", (req, res)=>{
+  return res.json(200)
+})
+
 server.listen(3000, () => console.log("> Rodando"));
 
 db.usuario.findMany().then((usuarios) => console.log(usuarios));
