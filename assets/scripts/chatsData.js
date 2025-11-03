@@ -14,9 +14,8 @@ function mostrarDados(dados) {
     const graficoPizza = new Chart(ctx, {
         type: 'pie',
         data: {
-            labels: ['Trabalho', 'Sono', 'Lazer'],
+            labels: ['Horas de Trabalho', 'Horas de Sono', 'Horas de Lazer'],
             datasets: [{
-                label: 'Horas de sono',
                 data: dados,
                 backgroundColor: [
                     '#3294D0',  
