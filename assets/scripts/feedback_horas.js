@@ -1,7 +1,5 @@
-// Função principal: carrega dados do backend e mostra feedback no <p class="recomendacoes">
 async function carregarFeedbackHoras() {
-  // Pega o userId do cookie (assumindo que está logado e o cookie existe)
-  const userId = getCookie("userId"); // Função auxiliar para ler cookie
+  const userId = getCookie("userId");
   if (!userId) {
     document.querySelector(".recomendacoes").textContent =
       "Erro: Usuário não logado. Faça login para ver o feedback.";
@@ -9,7 +7,6 @@ async function carregarFeedbackHoras() {
   }
 
   try {
-    // Faz a requisição para o backend
     const resposta = await fetch(
       `http://localhost:3000/api/horas?userId=${userId}`
     );
@@ -19,10 +16,8 @@ async function carregarFeedbackHoras() {
 
     const dados = await resposta.json();
 
-    // Gera as mensagens baseadas nos dados
     const mensagens = gerarMensagensFeedback(dados);
 
-    // Atualiza o conteúdo do <p class="recomendacoes"> com as mensagens
     document.querySelector(".recomendacoes").innerHTML = mensagens;
   } catch (error) {
     document.querySelector(".recomendacoes").textContent =
@@ -30,26 +25,21 @@ async function carregarFeedbackHoras() {
   }
 }
 
-// Função auxiliar: gera HTML com as mensagens de feedback
 function gerarMensagensFeedback(dados) {
-  // Converte minutos para horas
   const horas_sono = dados.horas_sono / 60;
   const horas_trabalho = dados.horas_trabalho / 60;
   const horas_lazer = dados.horas_lazer / 60;
 
   let mensagensHTML = "<ul>";
 
-  // Mensagem para Sono
   mensagensHTML +=
     "<li><strong>Sono:</strong> " + obterMensagem("sono", horas_sono) + "</li>";
 
-  // Mensagem para Trabalho
   mensagensHTML +=
     "<li><strong>Trabalho:</strong> " +
     obterMensagem("trabalho", horas_trabalho) +
     "</li>";
 
-  // Mensagem para Lazer
   mensagensHTML +=
     "<li><strong>Lazer:</strong> " +
     obterMensagem("lazer", horas_lazer) +
@@ -59,8 +49,6 @@ function gerarMensagensFeedback(dados) {
   return mensagensHTML;
 }
 
-
-// Função auxiliar: obtém a mensagem específica baseada no tipo e horas
 function obterMensagem(tipo, horas) {
   if (isNaN(horas) || horas < 0) return "Dados inválidos.";
 
@@ -91,7 +79,6 @@ function obterMensagem(tipo, horas) {
   return "Tipo desconhecido.";
 }
 
-// Função auxiliar: lê um cookie pelo nome
 function getCookie(name) {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${name}=`);
