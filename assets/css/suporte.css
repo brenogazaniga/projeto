@@ -16,11 +16,7 @@ main{
   justify-content: center;
   align-items: center;
   width: 100%;
-<<<<<<< Updated upstream
-  flex-direction: column;
-=======
   height: 100vh;
->>>>>>> Stashed changes
 }
 #faq{
   border: solid #6b9ac4 5px;
@@ -106,7 +102,6 @@ main{
   gap: 27px;
   overflow: auto; 
 }
-<<<<<<< HEAD
 .email-link {
   color: #0b66c3;
   text-decoration: underline;
@@ -118,7 +113,6 @@ main{
 }
 
 
-=======
 
 @media screen and (max-width: 1275px) {
    aside#barra-lateral {
@@ -134,4 +128,3 @@ main{
 aside#barra-lateral.show {
     transform: translateX(0%);
 }
->>>>>>> 8521d136646b6bef018d3cdf349ae6285b872c8d
