@@ -42,4 +42,11 @@ rotaLogin.post("/api/login", async (req, res) => {
   }
 });
 
+rotaLogin.get("/logout", async (req, res) => {
+  res.clearCookie("token")
+  res.clearCookie("userId")
+  res.json({ "mensagem": "Cookie apagado" })
+
+})
+
 module.exports = { rotaLogin };

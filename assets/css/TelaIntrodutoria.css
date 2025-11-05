@@ -16,7 +16,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 100px;
-}
+} 
 
 #container {
     display: flex;
@@ -24,7 +24,7 @@ body {
 }
 
 #titulo {
-    font-size: 150px;
+    font-size: 8rem;
     color: #3C5465
 }
 

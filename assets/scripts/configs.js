@@ -8,3 +8,10 @@ function closeModal(){
   modal.classList.add("disable")
 }
 
+document.querySelector("#logout a").addEventListener("click", async function(event) {
+  event.preventDefault(); 
+  await fetch("/logout")
+  localStorage.removeItem("token"); 
+  window.location.href = "/"; 
+});
+
