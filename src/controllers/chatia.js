@@ -2,7 +2,7 @@ const { Router } = require("express");
 const { db } = require("../db");
 const { seguranca } = require("../auth");
 const rotaChatia = Router();
-const API_KEY = "AIzaSyB9WWATTL7ZDSsdculUxvPPgoBvAUT0iA8"
+const API_KEY = process.env.API_KEY_GEMINI
 
 const CONTEXTO = `
 Você é um assistente virtual do site Equilibra, equilibra é um projeto desenvolvido como TCC do curso tecnico de desenvlvimento de sistemas do cedup,
@@ -24,7 +24,7 @@ rotaChatia.post("/api/chat", seguranca, async (req, res) => {
       headers: {
         "Content-Type": "application/json",
         "x-goog-api-key": API_KEY,
-        "Authentication": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzYwOTc4ODk5fQ.UZZjNXiarRrJ9qVDmeyEQ-tJI0Z7EKxK-2q6QXj0wbo"
+        "Authentication": process.env.TOKEN_USER_ACESS
     },
       body: JSON.stringify({
         

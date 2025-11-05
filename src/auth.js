@@ -1,5 +1,6 @@
+require('dotenv').config()
 const jwt = require("jsonwebtoken");
-const chaveSecreta = "chave-secreta-do-token-123456789";
+const chaveSecreta = process.env.CHAVE_SECRETA;
 
 function seguranca(req, res, next) {
   const token = req.header("Authentication")?.replace("Bearer ", "");

@@ -17,15 +17,15 @@ server.use("/assets", express.static("assets"));
 server.use(cors());
 server.use(cookieparser());
 server.use(express.json());
-server.use(express.static(path.join(__dirname, "../pages/TelaCadastro")));
-server.use(express.static(path.join(__dirname, "../pages/TelaDeLogin")));
+server.use(express.static(path.join(__dirname, "./pages/TelaCadastro")));
+server.use(express.static(path.join(__dirname, "./pages/TelaDeLogin")));
 server.use(rotaUsuario);
 server.use(rotaMetrica);
 server.use(rotaPaginas);
 server.use(rotaLogin);
 server.use(rotaChatia);
 server.get("/teste", (req, res) => {
-    res.sendFile(path.join(__dirname, "../pages/oauth.html"));
+    res.sendFile(path.join(__dirname, "./pages/oauth.html"));
     
 });
 
@@ -58,6 +58,10 @@ server.get("/api/horas", async (req, res) => {
     res.status(500).json({ error: "Erro no servidor" });
   }
 });
+
+server.get("/teste", (req, res)=>{
+  return res.json(200)
+})
 
 server.listen(3000, () => console.log("> Rodando"));
 

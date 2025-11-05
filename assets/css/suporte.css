@@ -16,7 +16,11 @@ main{
   justify-content: center;
   align-items: center;
   width: 100%;
+<<<<<<< Updated upstream
   flex-direction: column;
+=======
+  height: 100vh;
+>>>>>>> Stashed changes
 }
 #faq{
   border: solid #6b9ac4 5px;
