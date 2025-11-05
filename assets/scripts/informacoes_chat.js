@@ -47,7 +47,7 @@ addEventListener("DOMContentLoaded", () => {
             
         })
         
-        console.log(token)
+     
         document.getElementById("mensagem_input").value = ''
         conversa.scrollTop = conversa.scrollHeight
     })

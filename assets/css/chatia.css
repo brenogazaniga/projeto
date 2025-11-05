@@ -23,12 +23,11 @@ main {
   align-items: center;
   justify-content: center;
   display: flex;
-  font-family: "Madimi One", sans-serif;
-  
+  font-weight: bold;
+  padding: 10px;
 }
 
 .conteudo {
-  font-family: "Madimi One", sans-serif;
   color: #405468;
   font-size: 25px;
   width: 70%;
