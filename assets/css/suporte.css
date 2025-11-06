@@ -16,7 +16,7 @@ main{
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  flex-direction: column;
 }
 #faq{
   border: solid #6b9ac4 5px;
@@ -37,14 +37,12 @@ main{
   border-radius: 40px;
   background-color: #d9d9d9;
   display: flex;
-  align-items: center;
-
+ 
   justify-content: space-between;
   padding-left: 30px;
   padding-right: 30px;
   flex-direction: column;
   height: fit-content;
-
   padding: 30px;
 
   .wrap {
@@ -52,11 +50,10 @@ main{
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-
   }
   .wrap.maior {
-    .img {
-      transform:rotateY(180de);
+  img {
+      transform:rotate(180deg);
     }
   }
   
@@ -68,6 +65,9 @@ main{
 }
 
 .wrap.maior ~ .resposta  {
+  img {
+      transform:rotate(0deg);
+    }
   height: fit-content;
   display: block;
 }
@@ -76,11 +76,11 @@ main{
   height: 0px;
   display: none;
   overflow: hidden;
-  font-size: 30px;
+  font-size: 25px;
   margin-top: 15px;
   padding: 10px;
-
-} 
+  
+}
 
 
 .botao{
@@ -102,29 +102,4 @@ main{
   gap: 27px;
   overflow: auto; 
 }
-.email-link {
-  color: #0b66c3;
-  text-decoration: underline;
-  cursor: pointer;
-}
 
-.email-link:hover {
-  color: #084b9f;
-}
-
-
-
-@media screen and (max-width: 1275px) {
-   aside#barra-lateral {
-        transform: translateX(-100%);
-        position: fixed;
-        left: 0;
-        top: 0;
-        z-index: 9990;
-        transition: transform 300ms ease;
-    }
-}
-
-aside#barra-lateral.show {
-    transform: translateX(0%);
-}
