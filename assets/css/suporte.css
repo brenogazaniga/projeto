@@ -52,11 +52,10 @@ main{
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-
   }
   .wrap.maior {
-    .img {
-      transform:rotateY(180de);
+    img {
+      transform:rotate(180deg);
     }
   }
   
@@ -86,9 +85,8 @@ main{
 .botao{
   background-color: transparent;
   border: none;
-    transition: 0.4s;
-   cursor: pointer;
-
+  transition: 0.4s;
+  cursor: pointer;
 }
 
 
