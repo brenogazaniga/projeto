@@ -8,6 +8,7 @@
     <script src="../assets/scripts/informacoes_chat.js"></script>
     <script src="../assets/scripts/feedback_horas.js"></script>
     <script src="../assets/scripts/mensagem_vazia_sugestoes.js"></script>
+    <script src="../assets/scripts/sidebar.js"></script>
     <title>Chat Ia</title>
   </head>
 
@@ -39,6 +40,7 @@
     </aside>
 
     <main>
+      <div id="tudo">
       <div id="esquerda">
         <div class="card card_sugestao_horas">
           <div class="titulo">SUGESTÃO COM BASE NO GRÁFICO DIÁRIO</div>
@@ -55,7 +57,6 @@
           <div class="titulo">FEEDBACK DAS SUAS HORAS</div>
           <div class="conteudo">
             <p class="recomendacoes"></p>
-           
           </div>
         </div>
       </div>
@@ -78,6 +79,7 @@
           </div>
         </div>
       </div>
+    </div>
     </main>
 <script>
   window.onload = function() {

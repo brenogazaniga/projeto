@@ -7,9 +7,20 @@
   box-sizing: border-box;
 }
 main {
-  width: 100%;  
+  width: 100vw;  
+  height: 100vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 1047px;
 } 
+
+#tudo {
+  display: flex;
+  height: 90%;
+  width: 90%;
+  padding: 0px 20px 0px 20px
+}
 
 .titulo {
   color: white;
@@ -37,29 +48,19 @@ main {
   text-align: justify;
   background-color: white;
   position: relative;
-  
 }
-
-.madimi-one-regular {
-  font-family: "Madimi One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
 
 #esquerda{
   display: flex;
-  flex-direction: column;
+  height: 100%;
   width: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  max-height: 100vh;
 }
 
 .direita{
-  max-height: 100vh;
   width: 50%;
   display: flex;
   justify-content: center;
@@ -68,18 +69,19 @@ main {
 
 .chatia {
   width: 75%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  
   .conteudo,
   .titulo {
-    width: 90%;
+    width: 100%;
   }
+  
   .conteudo {
     padding: 1rem;
-    height: 90%;
+    height: 100%;
     overflow-y: auto;
   }
 
@@ -148,11 +150,11 @@ main {
   }
 
   &.card_sugestao_horas{
-    height: 35%;
+    height: 48%;
   }
 
-  &.card_sugestao_alimento{
-    height: 55%;
+  &.card_sugestao_atividade{
+    height: 48%;
   }
 }
 
@@ -237,3 +239,19 @@ input:disabled, button:disabled {
   cursor: not-allowed !important;
   filter: brightness(0.5);
 }
+
+@media screen and (max-width: 1560px) {
+  aside#barra-lateral {
+        transform: translateX(-100%);
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 9990;
+        transition: transform 300ms ease;
+    }
+}
+
+aside#barra-lateral.show {
+    transform: translateX(0%);
+}
+
