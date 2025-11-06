@@ -52,11 +52,7 @@ main{
     width: 100%;
   }
   .wrap.maior {
-<<<<<<< HEAD
   img {
-=======
-    img {
->>>>>>> 64f97653a5df7cc056068bdc460ca9b7b388a8da
       transform:rotate(180deg);
     }
   }
@@ -80,7 +76,7 @@ main{
   height: 0px;
   display: none;
   overflow: hidden;
-  font-size: 25px;
+  font-size: 22px;
   margin-top: 15px;
   padding: 10px;
   
