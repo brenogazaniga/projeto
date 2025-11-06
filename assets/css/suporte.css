@@ -52,7 +52,11 @@ main{
     width: 100%;
   }
   .wrap.maior {
+<<<<<<< HEAD
   img {
+=======
+    img {
+>>>>>>> 64f97653a5df7cc056068bdc460ca9b7b388a8da
       transform:rotate(180deg);
     }
   }
@@ -86,9 +90,8 @@ main{
 .botao{
   background-color: transparent;
   border: none;
-    transition: 0.4s;
-   cursor: pointer;
-
+  transition: 0.4s;
+  cursor: pointer;
 }
 
 
