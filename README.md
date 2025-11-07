@@ -1,3 +1,4 @@
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/brenogazaniga/projeto/1409f377412c1390893e934fa66b66206c1afa4b/assets/img/logo.svg" width="350
   ">
@@ -11,17 +12,7 @@ O **Equilibra** tem como objetivo principal **prevenir a Síndrome de Burnout** 
 
 A plataforma permite que o usuário **registre suas atividades diárias**, informando quantas horas dedicou a cada uma delas.  
 
- 
 Com base nesses dados, o sistema **gera gráficos visuais e recomendações personalizadas**, ajudando o usuário a compreender seus hábitos e melhorar sua qualidade de vida.
-
-# ESCOLHA DO TEMA 💻
-Nossa equipe escolheu trabalhar com o tema da **prevenção da Síndrome de Burnout** por reconhecer a importância de discutir a **saúde mental** nos dias atuais. Vivemos em uma sociedade cada vez mais corrida, onde muitas pessoas enfrentam **sobrecarga de estudos, trabalho e responsabilidades**, o que pode gerar **cansaço extremo, estresse constante e esgotamento emocional**.
-
-Percebemos que, principalmente entre estudantes e profissionais, é comum a dificuldade de manter uma rotina equilibrada entre **trabalho, lazer e descanso**, e isso pode levar ao desenvolvimento de sintomas relacionados ao burnout. Diante desse cenário, nossa equipe teve a ideia de criar um projeto que possibilite o usuário monitorar seus hábitos diários, ajudando o usuário a compreender melhor sua rotina e a encontrar um equilíbrio saudável entre suas atividades diárias.
-
-O **Projeto Equilibra** nasceu, então, com o propósito de **promover o autocuidado e a conscientização sobre a importância do equilíbrio entre corpo e mente**, mostrando como o uso da tecnologia pode ser uma ferramenta poderosa na **prevenção do burnout e na melhoria da qualidade de vida**.
-
-
 
 # OBJETIVO DO PROJETO 🎯
 
@@ -35,7 +26,7 @@ O **Projeto Equilibra** nasceu, então, com o propósito de **promover o autocui
 
 # TECNOLOGIAS UTILIZADAS 🛠️
 
-- [FIGMA:](https://www.figma.com/design/G9X2GCtuXTVw1uxUnfd48z/Projeto-Equilibra?node-id=6-29&t=94KohihUETQijVJt-1) Plataforma de design colaborativa baseada na nuvem que permite criar, prototipar e compartilhar designs para interfaces digitais, como sites e aplicativos.                                                                                                                                                              
+- [Figma:](https://www.figma.com/design/G9X2GCtuXTVw1uxUnfd48z/Projeto-Equilibra?node-id=6-29&t=94KohihUETQijVJt-1) Plataforma de design colaborativa baseada na nuvem que permite criar, prototipar e compartilhar designs para interfaces digitais, como sites e aplicativos.                                                                                                                                                              
 
 - [HTML5:](https://developer.mozilla.org/pt-BR/docs/Web/HTML) Utilizado para estruturar e organizar o conteúdo de páginas web, como textos, imagens e links, utilizando uma linguagem de marcação.
 
@@ -51,24 +42,23 @@ O **Projeto Equilibra** nasceu, então, com o propósito de **promover o autocui
 
 - [NODE JS:](https://nodejs.org/pt) É um ambiente de execução que permite usar o JavaScript fora do navegador, principalmente no lado do servidor (back-end), para criar aplicações web, ferramentas de linha de comando e APIs.
 
-- [API GEMINI:](https://aistudio.google.com/) Permite que desenvolvedores usem os modelos de IA generativa do Google Gemini em seus próprios aplicativos. 
+- [API GEMINI:](https://nodejs.org/pt) Permite que desenvolvedores usem os modelos de IA generativa do Google Gemini em seus próprios aplicativos. 
  
 # REALIZAÇÃO DO PROJETO
+Primeiramente, nossa equipe iniciou o projeto desenvolvendo **os protótipos no Figma**, onde foram criados todos os modelos e layouts das telas do sistema. Essa etapa foi essencial para definir o **design, a navegação e a estrutura visual** do site antes de começarmos a programação.
 
-Primeiramente, nosso grupo utilizou o **Figma** para desenvolver toda a estética e o funcionamento do site. Nessa etapa, criamos o design completo das telas e o fluxo de navegação do usuário, definindo cores, tipografia e elementos visuais que transmitissem a proposta do projeto.
+Em seguida, realizamos a instalação do **Node.js**, o que nos permitiu utilizar o **JavaScript** dentro do **Visual Studio Code (VS Code)** e iniciar o desenvolvimento das telas em **HTML** e **CSS**.
 
-Após a conclusão do design, passamos para a parte de desenvolvimento, onde utilizamos **HTML5** e **CSS3** para replicar o modelo criado no **Figma** em páginas web. Essa etapa foi essencial para transformar as ideias visuais em uma interface funcional e responsiva.
+Durante o processo de programação, enfrentamos alguns desafios, principalmente relacionados a **erros de código e dificuldades técnicas**. Alguns problemas foram resolvidos com facilidade, enquanto outros exigiram mais tempo, pesquisa e colaboração entre os integrantes da equipe.
 
-Na sequência, foi desenvolvido o **back-end** do sistema, utilizando **JavaScript**, responsável por fazer a comunicação entre o servidor e o banco de dados. Além disso, implementamos a parte de **cadastro e autenticação de usuários**, incluindo a opção de **“Login com Google”**, garantindo uma experiência mais prática e segura para o usuário.
-
-Durante as pesquisas sobre a inteligência artificial que seria integrada ao projeto, o grupo concluiu que a **API do Gemini**, desenvolvida pela Google, seria a opção mais viável e acessível. Com essa escolha, foi possível integrar ao site um **chatbot inteligente**, voltado especificamente ao tema central do projeto — **a prevenção da Síndrome de Burnout.** A integração foi realizada em **JavaScript**, possibilitando que o usuário interaja com a IA diretamente pelo site.
-
-Para armazenar as informações e gerenciar os dados do sistema, utilizamos o **Prisma**, um **ORM (Object-Relational Mapping)** para **Node.js**, junto ao **SQLite**, um banco de dados leve e embarcado. Essa combinação permitiu uma implementação prática, eficiente e adequada às necessidades do projeto.
-
-Por fim, com todas essas etapas concluídas, o projeto ganhou forma e passou a unir **design, funcionalidade e inteligência artificial** para oferecer uma ferramenta voltada ao bem-estar e à prevenção da **Síndrome de Burnout.**
+Apesar das dificuldades, essa fase foi fundamental para o **aprendizado coletivo** e para o **avanço do projeto**, resultando em uma base sólida para o desenvolvimento completo do **Projeto Equilibra**.
 
 
+# O PORQUE NOSSA EQUIPE PENSOU NESSE TEMA
 
+Esse tema um hoje em dia ele é muito causado pelo estresse excessivo que trabalho, lazer pode trazer a uma pessoa jovem adulta ou com uma certa idade .com isso nossa equie quer criar um site/app para prevenir isso e tambem porque celulares e notbooks são
+
+#
 
 # Colaboradores
 
@@ -82,8 +72,4 @@ Por fim, com todas essas etapas concluídas, o projeto ganhou forma e passou a u
 **JOÃO EDUARDO ANDRETTO**
 
 **MARCOS VINICIUS DOS SANTOS MEDEIRA**
-<<<<<<< HEAD
 #
-=======
-#
->>>>>>> c728576d4dcac6cf1e998059a18088e29759972a
