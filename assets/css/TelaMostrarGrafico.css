@@ -8,81 +8,53 @@
 
 body {
     display: flex;
-    background-color: #C5D1FF;
+    background-color: #EFF2F1;
 }
 
-.itens-direita {
-    width: 100vw;
+.coisas-direita{
     height: 100vh;
+    width: 100vw;
     display: flex;
-    flex-direction: column;
+}
+.itens-esquerda {
+    height: 100%;
+    min-width: 900px;
+    max-width: 1000px;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
-.Titulo-sobre-dia {
-    height: 180px;
-    width: 100%;
+.itens-direita{
+    height: 100%;
+    min-width: 700px;
+    max-width: 800px;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: end;
-    padding-bottom: 30px;
 }
 
-.bloco-grafico {
-    width: 900px;
-    height: 500px;
-    background-color: #FFFFFF;
+
+.bloco-grafico{
+    background-color: white;
     border-radius: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    min-height: 800px;
+    max-height: 1000px;
+    min-width: 700px;
+    max-width: 900px;
 }
 
-.mostrar-grafico {
-    width: 100%;
-    height: 350px;
-    display: flex;
-    justify-content: center;
+.bloco-barra{
+    background-color: white;
+    border-radius: 40px;
+    min-height: 800px;
+    max-height: 1000px;
+    min-width: 600px;
+    max-width: 900px;
 }
 
-#graficoPizza {
-    width: 350px;
-    height: 350px;
-    margin-left: 100px;
-}
-
-.aviso {
-    width: 100%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.descricao-aviso {
-    width: 300px;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
-
-.aviso p{
-    font-weight: 700;
-}
-
-@media screen and (max-width: 1335px) {
-   aside#barra-lateral {
-        transform: translateX(-100%);
-        position: fixed;
-        left: 0;
-        top: 0;
-        z-index: 9990;
-        transition: transform 300ms ease;
-    }
-}
-
-aside#barra-lateral.show {
-    transform: translateX(0%);
+#graficoPizza{
+    border: solid 1px;
+    width: 500px;
+    height: 500px;
 }
