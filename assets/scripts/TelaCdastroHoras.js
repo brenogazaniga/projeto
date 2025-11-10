@@ -39,7 +39,7 @@ addEventListener("DOMContentLoaded", () => {
         const minutos = parseInt(partes[1], 10);
         return (horas * 60) + minutos;
     }
-    console.log("4123541523")
+
     fetch("/metricas", {
       method: "POST",
       headers: {
