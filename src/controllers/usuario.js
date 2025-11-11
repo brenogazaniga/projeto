@@ -8,13 +8,14 @@ rotaUsuario.get("/api/usuarios", seguranca, async (req, res) => {
   res.send(usuarios);
 });
 
+
 rotaUsuario.post("/api/usuarios", async (req, res) => {
   try {
     const { nome, email, senha } = req.body
     const usuario_existente = await db.usuario.findFirst({
       where: {
         email
-      }
+      } 
     })
 
     if (usuario_existente) {
