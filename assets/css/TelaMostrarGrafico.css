@@ -8,19 +8,40 @@
 
 body {
     display: flex;
-    background-color: #C5D1FF;
+    background-color: #EFF2F1;
 }
 
-.coisas-direita {
+.coisas-direita{
     height: 100vh;
     width: 100vw;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
 }
 
-.itens-esquerda {
-    height: 100%;
-    min-width: 900px;
-    max-width: 1000px;
+.bloco-grafico{
+    background-color: white;
+    border-radius: 40px;
+    min-height: 600px;
+    max-height: 800px;
+    min-width: 700px;
+    max-width: 900px;
+}
+
+.bloco-barra{
+    background-color: white;
+    border-radius: 40px;
+    min-height: 600px;
+    max-height: 800px;
+    min-width: 500px;
+    max-width: 800px;
+}
+
+.mostrar-grafico{
+    width: 100%;
+    min-height: 200px;
+    max-height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,8 +75,7 @@ body {
     max-width: 900px;
 }
 
-#graficoPizza {
-    border: solid 1px;
+#graficoPizza{
     width: 500px;
     height: 500px;
 }

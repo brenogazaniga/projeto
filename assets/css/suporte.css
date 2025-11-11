@@ -63,7 +63,7 @@ main{
   }
   
   p{
-      font-size: 20pt;
+      font-size: 25px;
       font-family: Arial, Helvetica, sans-serif;
       color: #6b9ac4;
   }
@@ -78,9 +78,13 @@ main{
   height: 0px;
   display: none;
   overflow: hidden;
-  font-size: 30px;
+  font-size: 25px;
   margin-top: 15px;
   padding: 10px;
+
+  p{
+    color: black;
+  }
 
 } 
 
@@ -117,12 +121,14 @@ main{
   font-size: 30pt;
   font-family: Arial, Helvetica, sans-serif;
   color: #6b9ac4; 
+
 }
-p{
+
+#titulo-email{
   font-size: 15pt;
   font-family: Arial, Helvetica, sans-serif;
+  padding: 10px;
   color: #6b9ac4;
-  padding: 10px; 
 }
 
 @media screen and (max-width: 1275px) {
