@@ -33,17 +33,19 @@ function gerarMensagensFeedback(dados) {
   let mensagensHTML = "<ul>";
 
   mensagensHTML +=
-    "<li><strong>Sono:</strong> " + obterMensagem("sono", horas_sono) + "</li>";
+    "<li><strong>Sono:</strong> " +
+    obterMensagem("sono", horas_sono) +
+    "<br><br></li>"; // Adicionado <br><br> para espaço vazio
 
   mensagensHTML +=
     "<li><strong>Trabalho:</strong> " +
     obterMensagem("trabalho", horas_trabalho) +
-    "</li>";
+    "<br><br></li>"; // Adicionado <br><br> para espaço vazio
 
   mensagensHTML +=
     "<li><strong>Lazer:</strong> " +
     obterMensagem("lazer", horas_lazer) +
-    "</li>";
+    "<br><br></li>"; // Adicionado <br><br> para espaço vazio
 
   mensagensHTML += "</ul>";
   return mensagensHTML;

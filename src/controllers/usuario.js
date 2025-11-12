@@ -8,20 +8,27 @@ rotaUsuario.get("/api/usuarios", seguranca, async (req, res) => {
   res.send(usuarios);
 });
 
+rotaUsuario.get("/api/usuario", seguranca, async (req, res) => {
+  const usuario = await db.usuario.findFirst({
+    where: {
+      id: req.decodificado.id,
+    },
+  });
+  res.send(usuario);
+});
+
 rotaUsuario.post("/api/usuarios", async (req, res) => {
   try {
-    const { nome, email, senha } = req.body
+    const { nome, email, senha } = req.body;
     const usuario_existente = await db.usuario.findFirst({
       where: {
-        email
-      }
-    })
+        email,
+      },
+    });
 
     if (usuario_existente) {
-      res
-      .status(400)
-      .json({ mensagem: "Email já cadastrado"});
-      return
+      res.status(400).json({ mensagem: "Email já cadastrado" });
+      return;
     }
 
     const novo_usuario = await db.usuario.create({
@@ -35,7 +42,7 @@ rotaUsuario.post("/api/usuarios", async (req, res) => {
       .status(201)
       .json({ mensagem: "Usuario criado com sucesso", id: novo_usuario.id });
   } catch (err) {
-    console.log(err)
+    console.log(err);
     res.status(400).json({ menssagem: "Erro ao criar usuario", erro: err });
   }
 });
