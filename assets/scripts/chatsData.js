@@ -60,43 +60,53 @@ pegardados().then((dados) => {
   mostrarDados([horas.horas_trabalho, horas.horas_lazer, horas.horas_sono]);
 });
 
-const finalValue = 50; // valor de equilíbrio (0 a 100)
+const finalValue = 80; // valor de equilíbrio (0 a 100)
 let currentValue = 0;
 const bar = document.getElementById("bar");
 const valueText = document.getElementById("valueText");
 const statusText = document.getElementById("statusText");
+const statusExplicaca = document.getElementById("explicacao-indice");
 
 function updateStatus(value) {
   if (value <= 5) {
     statusText.textContent = "Crítico";
     bar.style.background = "linear-gradient(90deg, #f44336, #ff9800)";
+    statusExplicaca.textContent = "Seu corpo e mente estão sobrecarregados.";
   } else if (value <= 10) {
     statusText.textContent = "Muito baixo";
     bar.style.background = "linear-gradient(90deg, #ffeb3b, #ff9800)";
+    statusExplicaca.textContent = "Você está no limite da exaustão.";
   } else if (value <= 15) {
     statusText.textContent = "A Melhorar";
     bar.style.background = "linear-gradient(90deg, #FE9E4A, #ff9800)";
+    statusExplicaca.textContent = "Nível preocupante de desequilíbrio.";
   } else if (value <= 30) {
     statusText.textContent = "Baixo";
     bar.style.background = "linear-gradient(90deg, #FE9E4A, #ff9800)";
+    statusExplicaca.textContent = "Seu equilíbrio ainda está frágil.";
   } else if (value <= 50) {
     statusText.textContent = "Moderado";
     bar.style.background = "linear-gradient(90deg, #FFEB3B, #ff9800)";
-  }else if (value <= 70) {
+    statusExplicaca.textContent = "Você está no caminho certo.";
+  } else if (value <= 70) {
     statusText.textContent = "Bom";
     bar.style.background = "linear-gradient(90deg, #FFEB3B, #ff9800)";
-}else if (value <= 85) {
+    statusExplicaca.textContent = "Seu equilíbrio está saudável.";
+  } else if (value <= 85) {
     statusText.textContent = "Muito bom!";
     bar.style.background = "linear-gradient(90deg, #BAF351, #ff9800)";
-} else {
+    statusExplicaca.textContent =
+      "Você está com um ótimo controle emocional e físico.";
+  } else {
     statusText.textContent = "Excelente!!";
     bar.style.background = "linear-gradient(90deg, #4CAF50, #8bc34a)";
+    statusExplicaca.textContent = "Equilíbrio ideal atingido!!";
   }
 }
 
 function animateBar() {
   const step = 1; // quanto aumenta por frame
-  const delay = 20; // ms entre frames (~50fps)
+  const delay = 25; // ms entre frames (~50fps)
 
   const interval = setInterval(() => {
     if (currentValue >= finalValue) {
