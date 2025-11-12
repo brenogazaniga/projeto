@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -17,9 +17,9 @@ body {
 #back-arrow {
   width: 30px;
   height: auto;
-  position: absolute; 
-  top: 30px;          
-  left: 30px;   
+  position: absolute;
+  top: 30px;
+  left: 30px;
   font-size: 30px;
   cursor: pointer;
   z-index: 10;
@@ -153,23 +153,23 @@ input {
 }
 
 .senha {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    width: 100%; 
-    input {
-      padding-right: 44px;
-    }
-    .olho {
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 22px;      
-      height: auto;
-      cursor: pointer;
-      z-index: 5;
-      user-select: none;
-      pointer-events: auto;
-    }
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  input {
+    padding-right: 44px;
   }
+  .olho {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: auto;
+    cursor: pointer;
+    z-index: 5;
+    user-select: none;
+    pointer-events: auto;
+  }
+}

@@ -1,62 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/TelaMostrarGrafico.css">
-    <link rel="stylesheet" href="../assets/css/padrão-telas.css">
-    <title>Estatísticas Gerais</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/TelaMostrarGrafico.css" />
+    <link rel="stylesheet" href="../assets/css/padrão-telas.css" />
+    <script src="../assets/scripts/padrão-telas.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../assets/scripts/chatsData.js" defer></script>
     <script src="../assets/scripts/sidebar.js"></script>
-</head>
+    <title>Estatísticas Gerais</title>
+  </head>
 
-<body>
+  <body>
     <header id="logo-toggle" class="logo-fixed">
-        <img src="../assets/img/logo-equilibra.svg" alt="Logo Equilibra">
+      <img src="../assets/img/logo-equilibra.svg" alt="Logo Equilibra" />
     </header>
 
     <aside id="barra-lateral">
-        <div id="logo_e_user">
-            <section id="user">
-                <img id="user-image" src="../assets/img/user-solid-full.svg">
-                <p>User</p>
-            </section>
-        </div>
-        
-        <nav>
-            <ul id="navigation">
-                <li><a class="button-navegation" href="/cadastrar-horas">Cadastrar Horas</a></li>
-                <li><a class="button-navegation" href="/estatisticas-gerais">Estatísticas Gerais</a></li>
-                <li><a class="button-navegation" href="/sugestoes">Sugestões</a></li>
-                <li><a class="button-navegation" href="/configuracoes">Configurações</a></li>
-            </ul>
-        </nav>
+      <div id="logo_e_user">
+        <section id="user">
+          <img id="user-image" src="../assets/img/user-solid-full.svg" />
+          <p></p>
+        </section>
+      </div>
 
-        <div id="suporte">
-            <a href="/suporte">Suporte</a>         </div>
+      <nav>
+        <ul id="navigation">
+          <li>
+            <a class="button-navegation" href="/cadastrar-horas"
+              >Cadastrar Horas</a
+            >
+          </li>
+          <li>
+            <a class="button-navegation" href="/estatisticas-gerais"
+              >Estatísticas Gerais</a
+            >
+          </li>
+          <li><a class="button-navegation" href="/sugestoes">Sugestões</a></li>
+          <li>
+            <a class="button-navegation" href="/configuracoes">Configurações</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div id="suporte">
+        <a href="/suporte">Suporte</a>
+      </div>
     </aside>
     <div class="coisas-direita">
-        <div class="bloco-grafico">  
-            <div class="mostrar-grafico">
-                <canvas id="graficoPizza"></canvas>
-            </div>
-            <div class="texto-sintomas">
-                <div class="titulo-sintomas"><h1>Fique Atento aos Sinais do Burnout!!</h1></div>
-                <div class="sintomas-causas">
-                    <p><strong>Sintoma:</strong> Cansaço extremo e persistente</p>
-                    <p><strong>Causa:</strong> Excesso de carga de trabalho e falta de descanso adequado.</p>
-                </div>
-                <div class="explicacao-sintomas">
-                    <p>Quando o corpo e a mente não têm tempo para se recuperar,
-                        o cansaço se torna constante — um dos primeiros sinais de alerta para o burnout.</p>
-                    </div>
-            </div>
+      <div class="bloco-grafico">
+        <div class="mostrar-grafico">
+          <canvas id="graficoPizza"></canvas>
         </div>
-        <div class="bloco-barra">
+        <div class="texto-sintomas">
+          <div class="titulo-sintomas">
+            <h1>Fique Atento aos Sinais do Burnout!!</h1>
+          </div>
+          <div class="sintomas-causas">
+            <p><strong>Sintoma:</strong> Cansaço extremo e persistente</p>
+            <p>
+              <strong>Causa:</strong> Excesso de carga de trabalho e falta de
+              descanso adequado.
+            </p>
+          </div>
+          <div class="explicacao-sintomas">
+            <p>
+              Quando o corpo e a mente não têm tempo para se recuperar, o
+              cansaço se torna constante — um dos primeiros sinais de alerta
+              para o burnout.
+            </p>
+          </div>
         </div>
-        
+      </div>
+      <div class="bloco-barra"></div>
     </div>
-</body>
+  </body>
 </html>
