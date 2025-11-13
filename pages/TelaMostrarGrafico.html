@@ -2,57 +2,90 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/TelaMostrarGrafico.css">
-    <link rel="stylesheet" href="../assets/css/padrão-telas.css">
-    <title>Estatísticas Gerais</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="../assets/scripts/chatsData.js" defer></script>
-    <script src="../assets/scripts/sidebar.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../assets/css/TelaMostrarGrafico.css" />
+  <link rel="stylesheet" href="../assets/css/padrão-telas.css" />
+  <script src="../assets/scripts/padrão-telas.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../assets/scripts/chatsData.js" defer></script>
+  <script src="../assets/scripts/sidebar.js"></script>
+  <title>Estatísticas Gerais</title>
 </head>
 
 <body>
-    <header id="logo-toggle" class="logo-fixed">
-        <img src="../assets/img/logo-equilibra.svg" alt="Logo Equilibra">
-    </header>
+  <header id="logo-toggle" class="logo-fixed">
+    <img src="../assets/img/logo-equilibra.svg" alt="Logo Equilibra" />
+  </header>
 
-    <aside id="barra-lateral">
-        <div id="logo_e_user">
-            <section id="user">
-                <img id="user-image" src="../assets/img/user-solid-full.svg">
-                <p>User</p>
-            </section>
-        </div>
-        
-        <nav>
-            <ul id="navigation">
-                <li><a class="button-navegation" href="/cadastrar-horas">Cadastrar Horas</a></li>
-                <li><a class="button-navegation" href="/estatisticas-gerais">Estatísticas Gerais</a></li>
-                <li><a class="button-navegation" href="/sugestoes">Sugestões</a></li>
-                <li><a class="button-navegation" href="/configuracoes">Configurações</a></li>
-            </ul>
-        </nav>
-
-        <div id="suporte">
-            <a href="/suporte">Suporte</a>         </div>
-    </aside>
-    <div class="coisas-direita">
-        <div class="bloco-grafico">  
-            <div class="mostrar-grafico">
-                <canvas id="graficoPizza"></canvas>
-            </div>
-            <div class="texto-sintomas">
-                <div class="titulo-sintomas"><h1>Fique Atento aos Sinais do Burnout!!</h1></div>
-                <div class="sintomas-causas">
-                    <p><strong>Sintoma:</strong> Cansaço extremo e persistente</p>
-                    <p><strong>Causa:</strong> Excesso de carga de trabalho e falta de descanso adequado.</p>
-                </div>
-            </div>
-        </div>
-        <div class="bloco-barra">
-        </div>
-        
+  <aside id="barra-lateral">
+    <div id="logo_e_user">
+      <section id="user">
+        <img id="user-image" src="../assets/img/user-solid-full.svg" />
+        <p></p>
+      </section>
     </div>
+
+    <nav>
+      <ul id="navigation">
+        <li>
+          <a class="button-navegation" href="/cadastrar-horas">Cadastrar Horas</a>
+        </li>
+        <li>
+          <a class="button-navegation" href="/estatisticas-gerais">Estatísticas Gerais</a>
+        </li>
+        <li><a class="button-navegation" href="/sugestoes">Sugestões</a></li>
+        <li>
+          <a class="button-navegation" href="/configuracoes">Configurações</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="suporte">
+      <a href="/suporte">Suporte</a>
+    </div>
+  </aside>
+  <div class="coisas-direita">
+    <div class="bloco-grafico">
+      <div class="mostrar-grafico">
+        <canvas id="graficoPizza"></canvas>
+      </div>
+      <div class="texto-sintomas">
+        <div class="titulo-sintomas">
+          <h1>Fique Atento aos Sinais do Burnout!!</h1>
+        </div>
+        <div class="sintomas-causas">
+          <p id="sintoma"></p>
+          <p id="causa"></p>
+        </div>
+        <div class="explicacao-sintomas">
+          <p id="explicacao"></p>
+        </div>
+      </div>
+    </div>
+    <div class="bloco-barra">
+      <div class="mostrar-barra">
+        <h2>Equilíbrio Geral</h2>
+
+        <div class="bar-container">
+          <div class="bar-fill" id="bar"></div>
+        </div>
+
+        <div class="value-text" id="valueText">0%</div>
+        <div class="status-text" id="statusText">Carregando...</div>
+      </div>
+      <div id="explicacao-indice"></div>
+      <div class="sugestoes">
+        <p id="sugestao" style="margin-top: 10px;"></p>
+        <p id="alimentacao" style="margin-top: 5px;"></p>
+      </div>
+      <div class="frase-motivadora">
+        <h2>Frase Motivacional</h2>
+        <p id="motivacional" class="motivacional-texto"></p>
+      </div>
+
+    </div>
+  </div>
 </body>
+
 </html>
