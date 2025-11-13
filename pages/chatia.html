@@ -44,13 +44,9 @@
       <div id="tudo">
       <div id="esquerda">
         <div class="card card_sugestao_horas">
-          <div class="titulo">SUGESTÃO COM BASE NO GRÁFICO DIÁRIO</div>
+          <div class="titulo">PREVISÃO DE PRODUTIVIDADE</div> <!-- Título mudado -->
           <div class="conteudo">
-            Com base nas suas horas de sono e estudo, recomendamos que você
-            mantenha uma rotina equilibrada, garantindo pelo menos 7-8 horas de
-            sono por noite para otimizar seu desempenho acadêmico. Considere
-            também reservar tempo para pausas regulares durante o estudo para
-            melhorar a concentração e a retenção de informações.
+            <p class="previsao"></p> <!-- Novo elemento para previsões dinâmicas -->
           </div>
         </div>
 
@@ -84,7 +80,8 @@
     </main>
 <script>
   window.onload = function() {
-    carregarFeedbackHoras();  
+    carregarPrevisaoProdutividade();  // Carrega previsões
+    carregarFeedbackHoras();  // Carrega feedback
   };
 </script> 
   </body>

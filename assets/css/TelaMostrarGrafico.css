@@ -70,7 +70,7 @@ body {
 
 .sintomas-causas{
   font-size: 20.5px;
-  width: 600px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,6 +83,7 @@ body {
   margin-top: 15px;
   font-size: 20.5px;
   width: 600px;
+
 }
 
 h2 {
@@ -134,24 +135,30 @@ h2 {
 #explicacao-indice {
   width: 450px;
   height: 60px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   display: flex;
   justify-content: center;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .sugestoes{
   margin-top: 20px;
   width: 400px;
+  font-size: 18px;
   text-align: center;
-  font-size: 20px;
+
+}
+
+#sugestao{
+    margin-bottom: 10px;
 }
 
 .motivacional-texto {
   margin-bottom: 20px;
   font-style: italic;
   color: #000000;
-  font-size: 21px;
+  font-size: 20px;
   line-height: 1.5;
   opacity: 0;
   transition: opacity 1.5s ease;
@@ -176,6 +183,6 @@ h2 {
   h2{
     margin-bottom: 6px;
     margin-top: 20px;
-    font-size: 22px;
+    font-size: 21px;
   }
 }
