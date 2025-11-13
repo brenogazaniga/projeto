@@ -47,10 +47,10 @@ rotaUsuario.post("/api/usuarios", async (req, res) => {
   }
 });
 
-rotaUsuario.put("/api/usuarios/:id", seguranca, async (req, res) => {
+rotaUsuario.put("/api/usuarios/", seguranca, async (req, res) => {
   try {
     const { nome, email, senha } = req.body;
-    const id = req.params;
+    const id = req.decodificado.id;
 
     const data = {};
     if (nome) data.nome = nome;
