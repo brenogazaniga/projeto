@@ -255,6 +255,6 @@ aside#barra-lateral.show {
     transform: translateX(0%);
 }
 
-li{
+.recomendacoes li{
   padding: 10px;
 }
