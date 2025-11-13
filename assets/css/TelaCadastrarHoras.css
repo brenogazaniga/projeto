@@ -96,7 +96,7 @@ input[type="time"] {
   justify-content: space-around;
 }
 
-.cadastrar{
+.cadastrar {
   min-width: 70px;
   min-height: 30px;
 }
@@ -159,15 +159,15 @@ input[type="time"] {
 
 @media screen and (max-width: 1560px) {
   aside#barra-lateral {
-        transform: translateX(-100%);
-        position: fixed;
-        left: 0;
-        top: 0;
-        z-index: 9990;
-        transition: transform 300ms ease;
-    }
+    transform: translateX(-100%);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9990;
+    transition: transform 300ms ease;
+  }
 }
 
 aside#barra-lateral.show {
-    transform: translateX(0%);
+  transform: translateX(0%);
 }
