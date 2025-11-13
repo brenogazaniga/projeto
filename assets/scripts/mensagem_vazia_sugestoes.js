@@ -46,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
       mensagensContainer.removeChild(placeholder);
     }
    mensagensContainer.appendChild(nova);
-    input.value = "";
     mensagensContainer.scrollTop = mensagensContainer.scrollHeight;
     atualizarPlaceholder();
   });
