@@ -176,7 +176,7 @@ function updateStatus(value) {
   } else if (value <= 15) {
     statusText.textContent = "A Melhorar";
     bar.style.background = "linear-gradient(90deg, #FE9E4A, #ff9800)";
-  } else if (value <= 30) {
+  } else if (value <= 40) {
     statusText.textContent = "Baixo";
     bar.style.background = "linear-gradient(90deg, #FE9E4A, #ff9800)";
   } else if (value <= 50) {
