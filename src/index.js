@@ -29,7 +29,6 @@ server.get("/teste", (req, res) => {
     
 });
 
-// NOVA ROTA: Buscar horas de um usuário (adicione isso)
 server.get("/api/horas", async (req, res) => {
   const userId = parseInt(req.query.userId);
   if (!userId) {
