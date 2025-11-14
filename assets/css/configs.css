@@ -50,6 +50,11 @@ main#configuracoes {
                 gap:5px
             }
 
+            #display_icone_e_senha {
+                display: flex;
+                gap:10px;
+            }
+
             img {
                 width:25px;
                 height: auto;
