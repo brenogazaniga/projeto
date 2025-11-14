@@ -7,7 +7,7 @@ addEventListener("DOMContentLoaded", () => {
         const input = document.getElementById("mensagem_input");
         const button = document.querySelector('button[type="submit"]');
         const conversa = document.querySelector(".mensagens")
-        const mensagem_user = input.value.trim();
+        const mensagem_user = input.value;
 
         const mensagem = document.createElement("div")
         mensagem.classList.add("mensagem")
@@ -37,7 +37,7 @@ addEventListener("DOMContentLoaded", () => {
             const resposta = document.createElement("div");
             resposta.classList.add("mensagem");
             resposta.classList.add("chat");
-            resposta.innerHTML = chatiaresposta.reply;
+            resposta.innerHTML = chatiaresposta.reply.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');;
             
             button.disabled = false;
             input.disabled = false;
