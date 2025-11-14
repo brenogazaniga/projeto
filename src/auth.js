@@ -1,8 +1,9 @@
 require('dotenv').config()
 const jwt = require("jsonwebtoken");
+const { db } = require('./db');
 const chaveSecreta = process.env.CHAVE_SECRETA;
 
-function seguranca(req, res, next) {
+async function seguranca(req, res, next) {
   const token = req.header("Authentication")?.replace("Bearer ", "");
 
   if (!token) {
@@ -12,6 +13,18 @@ function seguranca(req, res, next) {
 
   try {
     const decodificado = jwt.verify(token, chaveSecreta);
+    
+    const usuario = await db.usuario.findUnique({
+      where: {
+        id: decodificado.id
+      }
+    })
+
+    if (!usuario) {
+      res.status(401).send("Token de acesso inválido");
+      return
+    }
+
     req.decodificado = decodificado;
     next();
     return;

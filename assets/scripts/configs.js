@@ -32,4 +32,34 @@ addEventListener("DOMContentLoaded", async () => {
   campos[0].querySelector("dd").innerHTML = dados.email;
   campos[1].querySelector("dd").innerHTML = dados.senha;
   campos[2].querySelector("dd").innerHTML = dados.nome;
+
+  document.querySelector("#salvar").addEventListener("click", editarInfos)
 });
+
+async function editarInfos () {
+  const nome = document.querySelector("#editar-nome")
+  const email = document.querySelector("#editar-email")
+  const senha = document.querySelector("#editar-senha")
+
+  const info = document.querySelector("#infos");
+  const resposta = await fetch("/api/usuarios", {
+    headers: {
+      Authentication: "Bearer " + localStorage.getItem("token"),
+    },
+    body: JSON.stringify({
+      nome: nome == "" ? null : nome,
+      email: email == "" ? null : email,
+      senha: senha == "" ? null : senha,
+    })
+  });
+
+  const dados = await resposta.json();
+
+  const inputEmail = dados.email
+  console.log(inputEmail)
+
+  const campos = info.querySelectorAll(".informacoes");
+  campos[0].querySelector("dd").innerHTML = dados.email;
+  campos[1].querySelector("dd").innerHTML = dados.senha;
+  campos[2].querySelector("dd").innerHTML = dados.nome;
+}
