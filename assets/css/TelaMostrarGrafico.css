@@ -186,3 +186,12 @@ h2 {
     font-size: 21px;
   }
 }
+
+#botao{
+  border-bottom: solid 1px white;
+  padding-bottom: 10px;
+  
+  a{
+    font-weight: bolder ;
+  }
+}

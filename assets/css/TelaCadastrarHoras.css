@@ -171,3 +171,12 @@ input[type="time"] {
 aside#barra-lateral.show {
   transform: translateX(0%);
 }
+
+#botao{
+  border-bottom: solid 1px white;
+  padding-bottom: 10px;
+
+    a{
+    font-weight: bolder ;
+  }
+}
