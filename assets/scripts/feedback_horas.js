@@ -9,7 +9,7 @@ async function carregarPrevisaoProdutividade() {
 
   try {
     const resposta = await fetch(
-      `http://localhost:3000/api/horas?userId=${userId}`
+      `/api/horas?userId=${userId}`
     );
     if (!resposta.ok) throw new Error("Erro ao carregar dados");
 
@@ -79,7 +79,7 @@ async function carregarFeedbackHoras() {
 
   try {
     const resposta = await fetch(
-      `http://localhost:3000/api/horas?userId=${userId}`
+      `/api/horas?userId=${userId}`
     );
     if (!resposta.ok) {
       throw new Error("Erro ao carregar dados");
