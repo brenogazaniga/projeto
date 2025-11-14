@@ -140,3 +140,12 @@ main {
 aside#barra-lateral.show {
   transform: translateX(0%);
 }
+
+#suporte{
+  border-bottom: solid 1px white;
+  padding-bottom: 10px;
+
+    a{
+    font-weight: bolder ;
+  }
+}

@@ -261,4 +261,8 @@ aside#barra-lateral.show {
 #botao{
   border-bottom: solid 1px white;
   padding-bottom: 10px;
+
+    a{
+    font-weight: bolder ;
+  }
 }

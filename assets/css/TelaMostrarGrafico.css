@@ -190,4 +190,8 @@ h2 {
 #botao{
   border-bottom: solid 1px white;
   padding-bottom: 10px;
+  
+  a{
+    font-weight: bolder ;
+  }
 }
