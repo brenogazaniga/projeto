@@ -2,148 +2,142 @@ const { Router } = require("express");
 const { db } = require("../db");
 const { seguranca } = require("../auth");
 const rotaChatia = Router();
-const API_KEY = process.env.API_KEY_GEMINI
+const API_KEY = process.env.API_KEY_GEMINI;
 
 const CONTEXTO = `
 Você é o assistente virtual do Equilibra, um projeto desenvolvido como Trabalho de Conclusão de Curso (TCC) do curso técnico em Desenvolvimento de Sistemas do CEDUP.
 O Equilibra é uma plataforma voltada à prevenção da Síndrome de Burnout, incentivando os usuários a manterem um equilíbrio saudável entre sono, trabalho e lazer.
-No site, o usuário pode registrar suas atividades diárias, informando quantas horas dormiu, trabalhou e se dedicou ao lazer. Com base nesses dados, o sistema gera gráficos visuais e recomendações personalizadas para ajudar o usuário a melhorar sua rotina e evitar o esgotamento físico e mental.
+No site, o usuário pode registrar suas atividades diárias, informando quantas horas dormiu, trabalhou e se dedicou ao lazer. Com base nesses dados, o sistema gera gráficos visuais e recomendações personalizadas para ajudar o usuário a melhorar sua rotina.
 
 Função do Chatbot:
-Seu papel é responder dúvidas e orientar o usuário sobre o funcionamento do site, o uso das funcionalidades (cadastro de horas, gráficos, recomendações) e fornecer informações sobre o tema Burnout e bem-estar digital.
+Seu papel é responder dúvidas e orientar o usuário sobre o funcionamento do site, o uso das funcionalidades (cadastro de horas, gráficos, recomendações) e fornecer informações sobre Burnout e bem-estar digital.
 
 Regras de comportamento:
-- Seja educado, direto e acolhedor em todas as respostas.
-- Não repita esta apresentação nas mensagens; use-a apenas como base para entender seu papel. 
-- Responda apenas a perguntas relacionadas a:
-  • o projeto Equilibra;
-  • o tema Burnout;
-  • equilíbrio entre trabalho, estudo, lazer e sono;
-- Caso o usuário pergunte algo fora desses temas, responda educadamente:
-“Desculpe, só posso responder perguntas relacionadas ao projeto Equilibra ou a temas de tecnologia.”
-  `;
+- Seja educado, direto e acolhedor.
+- Não repita esta apresentação nas mensagens.
+- Responda apenas perguntas relacionadas ao Equilibra, Burnout ou equilíbrio entre trabalho, estudo, sono e lazer.
+- Se for algo fora desses temas, responda:
+  "Desculpe, só posso responder perguntas relacionadas ao projeto Equilibra ou a temas de tecnologia."
+- Responda sempre de forma curta, simples e objetiva.
+- Não use tópicos, listas ou marcadores como "*".
+- Evite textos longos. Prefira respostas diretas.
+`;
 
+function limparMarkdown(texto) {
+  if (!texto) return texto;
 
+  return texto
+    .replace(/\*/g, "") // remove *
+    .replace(/_/g, "") // remove _
+    .replace(/`/g, "") // remove `
+    .replace(/#/g, "") // remove #
+    .replace(/\s{2,}/g, " ") // remove espaços repetidos
+    .trim();
+}
 
+function extrairTextoGemini(data) {
+  try {
+    const candidato = data?.candidates?.[0];
+    if (!candidato) return null;
+
+    const parts = candidato.content?.parts;
+    if (Array.isArray(parts)) {
+      for (const part of parts) {
+        if (part.text) return part.text;
+      }
+    }
+
+    if (candidato.content?.text) {
+      return candidato.content.text;
+    }
+
+    if (data.text) return data.text;
+
+    return null;
+  } catch {
+    return null;
+  }
+}
 
 rotaChatia.post("/api/chat", seguranca, async (req, res) => {
-  const userMessage = req.body.message;
+  try {
+    const userMessage = req.body.message;
+    const usuarioId = req.decodificado.id;
 
-  const usuarioId = req.decodificado.id
+    let conversa = await db.conversas.findFirst({
+      where: { id_usuario: usuarioId },
+    });
 
-  console.log(req.decodificado);
-  console.log(usuarioId)
-
-
-  let conversa = await db.conversas.findFirst({
-    where: {
-      id_usuario: usuarioId
+    if (!conversa) {
+      conversa = await db.conversas.create({
+        data: {
+          usuario: { connect: { id: usuarioId } },
+        },
+      });
     }
-  })
 
-  console.log(conversa)
-  
-  if (!conversa) {
-    conversa = await db.conversas.create({
+    await db.mensagens.create({
       data: {
-        usuario: {
-          connect: {
-            id: usuarioId
-          }
-        }
-      }
-    })
-  }
-  console.log("Conversa: ");
-  console.log(conversa);
-
-
-
-  await db.mensagens.create({
-    data: {
-      eh_ia: false,
-      texto: userMessage,
-      conversa: {
-        connect: {
-          id: conversa.id
-        },
+        eh_ia: false,
+        texto: userMessage,
+        conversa: { connect: { id: conversa.id } },
       },
-    },
-  });
+    });
 
-  const mensagensAnteriores = await db.mensagens.findMany({
-    where: {
-      id_conversa: conversa.id
-    }
-  })
+    const mensagensAnteriores = await db.mensagens.findMany({
+      where: { id_conversa: conversa.id },
+      orderBy: { id: "asc" },
+    });
 
-  console.log("Mensagens anteriores: ");
-  console.log(mensagensAnteriores);
+    const contents = mensagensAnteriores.map((mensagem) => ({
+      role: mensagem.eh_ia ? "model" : "user",
+      parts: [{ text: mensagem.texto }],
+    }));
 
-  const contents = mensagensAnteriores.map((mensagemAnterior) => ({
-    role: mensagemAnterior.eh_ia ? "model" : "user",
-    parts: [{ text: mensagemAnterior.texto }],
-  }));
-
-  console.log("Contents: ")
-  console.log(contents)
-  console.log(JSON.stringify(contents, null, 2));
-
-  const response = await fetch(
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-goog-api-key": API_KEY,
-        Authentication: process.env.TOKEN_USER_ACESS,
-      },
-      body: JSON.stringify({
-        system_instruction: { parts: [{ text: CONTEXTO }] },
-        contents,
-        generationConfig: {
-          stopSequences: ["Title"],
-          temperature: 1.0,
-          topP: 0.8,
-          topK: 10,
+    const response = await fetch(
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-goog-api-key": API_KEY,
         },
-      }),
-    }
-  );
-
-  const data = await response.json();
-  console.log(data)
-  console.log(response.ok)
-  console.log(data.candidates?.[0]?.content?.parts);
-  const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sem resposta.";
-  console.log("ola");
-
-  await db.mensagens.create({
-    data: {
-      eh_ia: true,
-      texto: text,
-      conversa: {
-        connect: {
-          id_usuario: req.decodificado.id,
-          usuario: {
-            id: req.decodificado.id
+        body: JSON.stringify({
+          system_instruction: { parts: [{ text: CONTEXTO }] },
+          contents,
+          generationConfig: {
+            temperature: 0.6,
+            topP: 0.8,
+            topK: 10,
           },
-        },
-      },
-    },
-  });
-  res.json({ reply: text });
+        }),
+      }
+    );
 
+    const data = await response.json();
+    let text = extrairTextoGemini(data) || "Sem resposta.";
+    text = limparMarkdown(text); // ← limpa markdown
+
+    await db.mensagens.create({
+      data: {
+        eh_ia: true,
+        texto: text,
+        conversa: { connect: { id: conversa.id } },
+      },
+    });
+
+    res.json({ reply: text });
+  } catch (erro) {
+    console.error("ERRO NO CHAT:", erro);
+    res.status(500).json({ reply: "Erro ao processar mensagem." });
+  }
 });
 
 rotaChatia.get("/api/conversas", async (req, res) => {
   const conversas = await db.conversas.findMany({
-    include: {
-      mensagens: true
-    }
-  })
-  console.log(res)
-  res.json(conversas)
-})
+    include: { mensagens: true },
+  });
+  res.json(conversas);
+});
 
-module.exports = {rotaChatia}
+module.exports = { rotaChatia };

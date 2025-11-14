@@ -79,6 +79,7 @@ main {
   font-size: 25px;
   margin-top: 15px;
   padding: 10px;
+  justify-content: flex-start;
 
   p {
     color: black;
