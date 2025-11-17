@@ -22,13 +22,21 @@ body {
     gap:60px
 }
 
+#logo{
+width: 30%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
 #titulo {
     font-size: 8rem;
-    color: #3C5465
+    color: white;
 }
 
 #paragrafo {
     font-size: 3rem;
+    color: white;
 }
 
 #box {
