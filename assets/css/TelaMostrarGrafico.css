@@ -18,6 +18,8 @@ body {
   justify-content: center;
   align-items: center;
   gap: 60px;
+  min-width: 1300px;
+  min-height: 730px;
 }
 
 .bloco-grafico {
@@ -194,4 +196,27 @@ h2 {
   a{
     font-weight: bolder ;
   }
+} 
+
+@media screen and (max-width: 1610px) {
+  aside#barra-lateral {
+        transform: translateX(-100%);
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 9990;
+        transition: transform 300ms ease;
+    }
+}
+
+aside#barra-lateral.show {
+    transform: translateX(0%);
+    height: 100vh;                
+    overflow-y: auto;             
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
 }

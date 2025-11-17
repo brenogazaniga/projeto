@@ -13,6 +13,7 @@ main {
   justify-content: center;
   align-items: center;
   min-width: 1047px;
+  min-height: 500px;
 } 
 
 #tudo {
@@ -168,16 +169,6 @@ main {
   border-radius: 10px;
 }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #354C60;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #354C60;
-}
-
 .mensagens{
   display: flex;
   flex-direction: column;
@@ -186,7 +177,6 @@ main {
   width: 100%;
   overflow-y: auto;
   justify-self: center;
-
 }
 
 .mensagem{
@@ -252,6 +242,9 @@ input:disabled, button:disabled {
 
 aside#barra-lateral.show {
     transform: translateX(0%);
+    height: 100vh;                
+    overflow-y: auto;             
+    -webkit-overflow-scrolling: touch;
 }
 
 .recomendacoes li{

@@ -8,6 +8,9 @@
 
 main#configuracoes {
     width: 100vw;
+    height: 100vh;
+    min-width: 550px;
+    min-height: 553px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,6 +48,11 @@ main#configuracoes {
             dd {
                 display: flex;
                 gap:5px
+            }
+
+            #display_icone_e_senha {
+                display: flex;
+                gap:10px;
             }
 
             img {
@@ -128,6 +136,9 @@ aside {
 
 aside#barra-lateral.show {
     transform: translateX(0%);
+    height: 100vh;                
+    overflow-y: auto;             
+    -webkit-overflow-scrolling: touch;
 }
 
 #botao{
@@ -137,4 +148,8 @@ aside#barra-lateral.show {
     a{
     font-weight: bolder ;
   }
+}
+
+::-webkit-scrollbar {
+  width: 0px;
 }

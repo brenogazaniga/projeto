@@ -17,6 +17,9 @@ document
     window.location.href = "/";
   });
 
+
+  
+
 addEventListener("DOMContentLoaded", async () => {
   const info = document.querySelector("#infos");
   const resposta = await fetch("/api/usuario", {
@@ -32,34 +35,56 @@ addEventListener("DOMContentLoaded", async () => {
   campos[0].querySelector("dd").innerHTML = dados.email;
   campos[1].querySelector("dd").innerHTML = dados.senha;
   campos[2].querySelector("dd").innerHTML = dados.nome;
-
-  document.querySelector("#salvar").addEventListener("click", editarInfos)
 });
 
-async function editarInfos () {
-  const nome = document.querySelector("#editar-nome")
-  const email = document.querySelector("#editar-email")
-  const senha = document.querySelector("#editar-senha")
 
-  const info = document.querySelector("#infos");
-  const resposta = await fetch("/api/usuarios", {
-    headers: {
-      Authentication: "Bearer " + localStorage.getItem("token"),
-    },
-    body: JSON.stringify({
-      nome: nome == "" ? null : nome,
-      email: email == "" ? null : email,
-      senha: senha == "" ? null : senha,
-    })
-  });
 
-  const dados = await resposta.json();
 
-  const inputEmail = dados.email
-  console.log(inputEmail)
+const fieldMap = {
+  email: "email",
+  senhaAntiga: "senhaAntiga",
+  novaSenha: "senha",
+  nome: "nome"
+};
 
-  const campos = info.querySelectorAll(".informacoes");
-  campos[0].querySelector("dd").innerHTML = dados.email;
-  campos[1].querySelector("dd").innerHTML = dados.senha;
-  campos[2].querySelector("dd").innerHTML = dados.nome;
+async function editarInfos() {
+  const novoEmail = document.querySelector("#editar-email")?.value || "";
+  const senhaAntiga = document.querySelector("#verificacao-senha-antiga")?.value || "";
+  const novaSenha = document.querySelector("#editar-senha")?.value || "";
+  const novoNome = document.querySelector("#editar-nome")?.value || "";
+
+  const body = {};
+
+  if (novoEmail) body[fieldMap.email] = novoEmail;
+  if (senhaAntiga) body[fieldMap.senhaAntiga] = senhaAntiga;
+  if (novaSenha) body[fieldMap.novaSenha] = novaSenha;
+  if (novoNome) body[fieldMap.nome] = novoNome;
+
+  try {
+    const resposta = await fetch("/api/usuarios/", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authentication: "Bearer " + localStorage.getItem("token"),
+      },
+      body: JSON.stringify(body),
+    });
+
+    const dados = await resposta.json().catch(() => ({}));
+    console.log("Resposta editarInfos:", resposta.status, dados);
+
+    if (!resposta.ok) {
+      alert(dados.message || "Erro ao atualizar. Código: " + resposta.status);
+      return;
+    }
+
+    alert("Informações atualizadas com sucesso!");
+    document.querySelector("#meuModal")?.classList.remove("aberto");
+
+  } catch (error) {
+    console.error("Erro de conexão:", error);
+    alert("Erro de conexão. Tente novamente.");
+  }
 }
+
+document.querySelector("#salvar").addEventListener("click", editarInfos);
