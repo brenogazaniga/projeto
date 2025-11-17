@@ -60,7 +60,7 @@ aside#barra-lateral {
   border-radius: 50px;
   padding: 10px;
   background-color: white;
-  
+  box-sizing: unset;
 }
 
 .button-navegation {
