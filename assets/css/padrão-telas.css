@@ -58,6 +58,9 @@ aside#barra-lateral {
   height: auto;
   background-color: #eff2f1;
   border-radius: 50px;
+  padding: 10px;
+  background-color: #939391;
+  fill: white;
 }
 
 .button-navegation {
