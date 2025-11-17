@@ -7,13 +7,11 @@
     <link rel="stylesheet" href="../assets/css/configs.css" />
     <link rel="stylesheet" href="../assets/css/modal-configs.css" />
     <script src="../assets/scripts/padrão-telas.js"></script>
-    <script src="../assets/scripts/configs.js" defer></script>
     <script src="../assets/scripts/olho-senha.js"></script>
     <script src="../assets/scripts/sidebar.js"></script>
-
     <title>Configurações</title>
   </head>
-
+  
   <body>
     <div class="back-modal disable">
       <div class="modal">
@@ -22,7 +20,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
               <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
               <path
-                d="M320 112C434.9 112 528 205.1 528 320C528 434.9 434.9 528 320 528C205.1 528 112 434.9 112 320C112 205.1 205.1 112 320 112zM320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM231 231C221.6 240.4 221.6 255.6 231 264.9L286 319.9L231 374.9C221.6 384.3 221.6 399.5 231 408.8C240.4 418.1 255.6 418.2 264.9 408.8L319.9 353.8L374.9 408.8C384.3 418.2 399.5 418.2 408.8 408.8C418.1 399.4 418.2 384.2 408.8 374.9L353.8 319.9L408.8 264.9C418.2 255.5 418.2 240.3 408.8 231C399.4 221.7 384.2 221.6 374.9 231L319.9 286L264.9 231C255.5 221.6 240.3 221.6 231 231z"
+              d="M320 112C434.9 112 528 205.1 528 320C528 434.9 434.9 528 320 528C205.1 528 112 434.9 112 320C112 205.1 205.1 112 320 112zM320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM231 231C221.6 240.4 221.6 255.6 231 264.9L286 319.9L231 374.9C221.6 384.3 221.6 399.5 231 408.8C240.4 418.1 255.6 418.2 264.9 408.8L319.9 353.8L374.9 408.8C384.3 418.2 399.5 418.2 408.8 408.8C418.1 399.4 418.2 384.2 408.8 374.9L353.8 319.9L408.8 264.9C418.2 255.5 418.2 240.3 408.8 231C399.4 221.7 384.2 221.6 374.9 231L319.9 286L264.9 231C255.5 221.6 240.3 221.6 231 231z"
               />
             </svg>
           </p>
@@ -33,15 +31,15 @@
             <label for="email">Inserir novo email</label>
             <input id="editar-email" name="email" type="email" />
           </div>
-
+          
           <div class="inputs">
             <label for="senha-antiga">Inserir senha antiga</label>
             <div class="senha">
-              <input id="verificacao-senha-antiga" type="password" name="senha-antiga" />
+              <input id="verificacao-senha-antiga" type="password" name="senha-antiga"/>
               <img src="../assets/img/eye-icon.svg" class="olho" />
             </div>
           </div>
-
+          
           <div class="inputs">
             <label for="senha-nova">Inserir nova senha</label>
             <div class="senha">
@@ -49,23 +47,23 @@
               <img src="../assets/img/eye-icon.svg" class="olho" />
             </div>
           </div>
-
+          
           <div class="inputs">
             <label for="nome">Inserir nome</label>
             <input id="editar-nome" type="text" />
           </div>
- 
+          
           <div id="button-info">
             <button id="salvar">Salvar informações</button>
           </div>
         </form>
       </div>
     </div>
-
+    
     <header id="logo-toggle" class="logo-fixed">
       <img src="../assets/img/logo-equilibra.svg" alt="Logo Equilibra" />
     </header>
-
+    
     <aside id="barra-lateral">
       <div id="logo_e_user">
         <section id="user">
@@ -73,17 +71,17 @@
           <p></p>
         </section>
       </div>
-
+      
       <nav>
         <ul id="navigation">
           <li>
             <a class="button-navegation" href="/cadastrar-horas"
-              >Cadastrar Horas</a
+            >Cadastrar Horas</a
             >
           </li>
           <li>
             <a class="button-navegation" href="/estatisticas-gerais"
-              >Estatísticas Gerais</a
+            >Estatísticas Gerais</a
             >
           </li>
           <li><a class="button-navegation" href="/sugestoes">Sugestões</a></li>
@@ -92,20 +90,20 @@
           </li>
         </ul>
       </nav>
-
+      
       <div id="suporte">
         <a href="/suporte">Suporte</a>
       </div>
     </aside>
-
+    
     <main id="configuracoes">
       <header id="title-config">
         <h2>Configurações</h2>
       </header>
-
+      
       <section>
         <h3 id="perfil-title">Perfil</h3>
-
+        
         <dl id="infos">
           <div class="informacoes">
             <dt>Email</dt>
@@ -113,12 +111,12 @@
           </div>
           <div class="informacoes">
             <dt>Senha</dt>
-              <div id="display_icone_e_senha" class="senha">
+            <div id="display_icone_e_senha" class="senha">
               <img src="../assets/img/eye-icon.svg" class="olho" />
-                <dd>
-                  **********
-                </dd>
-             </div>
+              <dd>
+                **********
+              </dd>
+            </div>
           </div>
           <div class="informacoes">
             <dt>Nome</dt>
@@ -129,23 +127,24 @@
         <footer id="editar-informacoes">
           <button onclick="showModal()">Editar informações</button>
         </footer>
-
+        
         <div id="logout">
           <p>Desconectar</p>
           <a href="/">
             <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-              id="icon-logout"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+            id="icon-logout"
             >
-              <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-              <path
-                d="M505 273c9.4-9.4 9.4-24.6 0-33.9L361 95c-6.9-6.9-17.2-8.9-26.2-5.2S320 102.3 320 112l0 80-112 0c-26.5 0-48 21.5-48 48l0 32c0 26.5 21.5 48 48 48l112 0 0 80c0 9.7 5.8 18.5 14.8 22.2s19.3 1.7 26.2-5.2L505 273zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"
-              />
-            </svg>
-          </a>
-        </div>
-      </section>
-    </main>
-  </body>
+            <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+            <path
+            d="M505 273c9.4-9.4 9.4-24.6 0-33.9L361 95c-6.9-6.9-17.2-8.9-26.2-5.2S320 102.3 320 112l0 80-112 0c-26.5 0-48 21.5-48 48l0 32c0 26.5 21.5 48 48 48l112 0 0 80c0 9.7 5.8 18.5 14.8 22.2s19.3 1.7 26.2-5.2L505 273zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"
+            />
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+</body>
+<script src="../assets/scripts/configs.js" defer></script>
 </html>
