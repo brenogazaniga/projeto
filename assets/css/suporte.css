@@ -39,7 +39,7 @@ main {
   border-radius: 40px;
   background-color: #dde3f9;
   display: flex;
-  align-items: center;
+  
 
   justify-content: space-between;
   padding-left: 30px;
@@ -83,6 +83,7 @@ main {
 
   p {
     color: black;
+
   }
 }
 
@@ -121,7 +122,7 @@ main {
 }
 
 #titulo-email {
-  font-size: 15pt;
+  font-size: 20pt;
   font-family: Arial, Helvetica, sans-serif;
   padding: 10px;
   color: #6b9ac4;
