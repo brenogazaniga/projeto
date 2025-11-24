@@ -8,11 +8,13 @@
         if (!!olhoestafechado) {
           olho.setAttribute("fechado", "")
           olho.src = olhoAberto
-          senha.querySelector("input").setAttribute("type", "password")
+          senha.querySelector("input")?.setAttribute("type", "password")
+          senha.querySelector("dd")?.setAttribute("type", "password")
         } else {
           olho.setAttribute("fechado", true)
           olho.src = olhoFechado
-          senha.querySelector("input").setAttribute("type", "text")
+          senha.querySelector("input")?.setAttribute("type", "text")
+          senha.querySelector("dd")?.setAttribute("type", "text")
         }
 
       })

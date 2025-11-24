@@ -49,48 +49,12 @@ input {
   border-radius: 40px;
   display: flex;
   align-items: center;
-  padding-top: 80px;
+  padding-top: 100px;
   flex-direction: column;
-}
 
-.botao-google {
-  width: 375px;
-  height: 55px;
-  font-size: 20px;
-  font-weight: 500;
-  border: solid black 1px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  transition: 0.4s;
-  cursor: pointer;
-}
-
-.botao-google:hover {
-  background-color: rgb(190, 190, 190);
-}
-
-.imagem-google {
-  padding-left: 10px;
-  height: 50%;
-}
-.imagem-google img {
-  width: 100%;
-  height: 100%;
-}
-.botao-google p {
-  padding-left: 15px;
-}
-
-.espaco-ou {
-  width: 374px;
-  height: 81px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.espaco-ou {
-  font-size: 20px;
+  h1 {
+    padding-bottom: 40px;
+  }
 }
 
 .botao-inserir-email {
