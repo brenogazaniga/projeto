@@ -39,8 +39,7 @@ addEventListener("DOMContentLoaded", async () => {
 
   const campos = info.querySelectorAll(".informacoes");
   campos[0].querySelector("dd").innerHTML = dados.email;
-  campos[1].querySelector("dd").innerHTML = dados.senha;
-  campos[2].querySelector("dd").innerHTML = dados.nome;
+  campos[1].querySelector("dd").innerHTML = dados.nome;
 });
 
 
