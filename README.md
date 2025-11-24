@@ -41,9 +41,9 @@ O **Projeto Equilibra** nasceu, então, com o propósito de **promover o autocui
 
 - [CSS3:](https://www.devmedia.com.br/guia/css/38149) Utilizado para estilizar a apresentação de documentos web, separando a estrutura (HTML) da aparência visual.
 
--  [JAVA SCRIPT:](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) É uma linguagem de programação usada para adicionar interatividade e comportamento dinâmico a sites, como animações, menus, validação de formulários e carregamento de conteúdo.
+-  [JAVASCRIPT:](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) É uma linguagem de programação usada para adicionar interatividade e comportamento dinâmico a sites, como animações, menus, validação de formulários e carregamento de conteúdo.
 
-- [GIT HUB:](https://github.com/brenogazaniga/projeto.git) Utilizamos o GitHub para hospedar e gerenciar projetos de código na nuvem, a ferramenta permite que os desenvolvedores do projeto colaborem entre si, rastreiem alterações e compartilhem seus trabalhos.
+- [GITHUB:](https://github.com/brenogazaniga/projeto.git) Utilizamos o GitHub para hospedar e gerenciar projetos de código na nuvem, a ferramenta permite que os desenvolvedores do projeto colaborem entre si, rastreiem alterações e compartilhem seus trabalhos.
 
 - [VISUAL STUDIO CODE:](https://code.visualstudio.com/docs) Serve como um editor de código-fonte gratuito e poderoso para desenvolver software em diversas linguagens, como JavaScript.
 

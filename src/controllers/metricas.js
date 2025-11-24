@@ -54,6 +54,11 @@ rotaMetrica.post("/metricas", seguranca, async (req, res) => {
 
 rotaMetrica.put("/metricas/:id", async (req, res) => {
   try {
+    const id = Number(req.params.id);
+    if (!Number.isInteger(id)) {
+      return res.status(400).json({ mensagem: "ID inválido" });
+    }
+
     const {
       horas_lazer,
       horas_sono,
@@ -63,24 +68,41 @@ rotaMetrica.put("/metricas/:id", async (req, res) => {
       timestamp,
       nota_refeicao,
     } = req.body;
-    const id = req.params;
+
+    console.log("PUT /metricas/:id params:", req.params);
+    console.log("PUT /metricas/:id body:", req.body);
 
     const data = {};
-    if (horas_lazer) data.horas_lazer = horas_lazer;
-    if (horas_sono) data.horas_sono = horas_sono;
-    if (horas_trabalho) data.horas_trabalho = horas_trabalho;
-    if (id_usuario) data.id_usuario = id_usuario;
-    if (usuario) data.usuario = usuario;
-    if (timestamp) data.timestamp = timestamp;
-    if (nota_refeicao) data.nota_refeicao = nota_refeicao;
+    if (horas_lazer !== undefined) data.horas_lazer = horas_lazer;
+    if (horas_sono !== undefined) data.horas_sono = horas_sono;
+    if (horas_trabalho !== undefined) data.horas_trabalho = horas_trabalho;
+    if (id_usuario !== undefined) data.id_usuario = id_usuario;
+    if (usuario !== undefined) data.usuario = usuario;
+    if (timestamp !== undefined) data.timestamp = timestamp;
+    if (nota_refeicao !== undefined) data.nota_refeicao = nota_refeicao;
 
-    await db.metricas_diarias.update({
+    if (Object.keys(data).length === 0) {
+      return res.status(400).json({ mensagem: "Nenhum campo para atualizar" });
+    }
+
+    const updated = await db.metricas_diarias.update({
       where: { id },
       data,
     });
-    res.status(200).json({ mensagem: "Métrica atualizada com sucesso!" });
+
+    return res
+      .status(200)
+      .json({ mensagem: "Métrica atualizada com sucesso!", updated });
   } catch (err) {
-    res.status(400).json({ mensagem: "Erro ao atualizar métricas", erro: err });
+    console.error("Erro ao atualizar métricas:", err);
+    if (err?.code === "P2025") {
+      return res.status(404).json({ mensagem: "Métrica não encontrada" });
+    }
+    return res.status(500).json({
+      mensagem: "Erro ao atualizar métricas",
+      erro: err.message || err,
+    });
   }
 });
+
 module.exports = { rotaMetrica };
