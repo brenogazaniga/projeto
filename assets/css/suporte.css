@@ -37,7 +37,7 @@ main {
   border: solid #6b9ac4 4px;
   width: 80%;
   border-radius: 40px;
-  background-color: #dde3f9;
+  background-color: #adc9e4;
   display: flex;
   
 
@@ -64,7 +64,7 @@ main {
   p {
     font-size: 25px;
     font-family: Arial, Helvetica, sans-serif;
-    color: #6b9ac4;
+    color: #475867;
   }
 }
 
@@ -125,7 +125,7 @@ main {
   font-size: 20pt;
   font-family: Arial, Helvetica, sans-serif;
   padding: 10px;
-  color: #6b9ac4;
+  color: #436381;
 }
 
 @media screen and (max-width: 1275px) {
