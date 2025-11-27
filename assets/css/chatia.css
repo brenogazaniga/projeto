@@ -49,6 +49,10 @@ main {
   text-align: justify;
   background-color: white;
   position: relative;
+
+  .previsao {
+    font-size: 1.6rem
+  }
 }
 
 #esquerda{
@@ -211,7 +215,7 @@ main {
   left: 50%;
   transform: translate(-50%, -70%);
   width: 95%;
-  
+  font-size: 1.6rem;
 }
 
 .mensagem-input {
@@ -249,6 +253,7 @@ aside#barra-lateral.show {
 
 .recomendacoes li{
   padding: 10px;
+  font-size: 1.6rem;
 }
 
 #botao{
