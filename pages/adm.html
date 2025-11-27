@@ -1,0 +1,142 @@
+<!-- troque este arquivo direto no navegador ou suba para seu servidor
+   - Botão 'Salvar no servidor' faz POST para /api/gemini-key (JSON: { key })
+   - Se seu backend usar outra rota, altere a variável `SERVER_ENDPOINT` abaixo
+   - Fallback: salva no localStorage (chave: gemini_api_key)
+   - Use com segurança: não deixe esse arquivo público em produção
+-->
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trocar Gemini API Key</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;margin:0;background:#0f172a;color:#e6eef8;display:flex;align-items:center;justify-content:center;height:100vh}
+    .card{background:#0b1220;padding:24px;border-radius:12px;box-shadow:0 8px 30px rgba(2,6,23,.6);width:420px;max-width:94%}
+    h1{font-size:18px;margin:0 0 12px}
+    label{display:block;font-size:13px;margin:8px 0 6px}
+    input[type=text]{width:100%;padding:10px;border-radius:8px;border:1px solid #203040;background:#071223;color:#e6eef8}
+    .actions{display:flex;gap:8px;margin-top:12px}
+    button{flex:1;padding:10px;border-radius:8px;border:none;background:#1f6feb;color:white;cursor:pointer}
+    button.ghost{background:transparent;border:1px solid #2b3f63;color:#9fb7e8}
+    .hint{font-size:12px;color:#9fb7e8;margin-top:8px}
+    .status{margin-top:12px;font-size:13px}
+    .token-mask{font-family:monospace;background:#071826;padding:8px;border-radius:6px;display:inline-block}
+    .small{font-size:12px;color:#a8c0e8}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Trocar Gemini API Key</h1>
+
+    <label for="apiKey">Cole a API Key do Gemini</label>
+    <input id="apiKey" type="text" placeholder="sk-..." autocomplete="off" />
+
+    <div class="actions">
+      <button id="saveLocal">Salvar no local (localStorage)</button>
+      <button id="saveServer" class="ghost">Salvar no servidor (POST)</button>
+    </div>
+
+    <div style="display:flex;gap:8px;margin-top:8px">
+      <button id="maskToggle" class="ghost" style="flex:0 0 auto">Mostrar / Ocultar</button>
+      <button id="copyBtn" class="ghost" style="flex:0 0 auto">Copiar</button>
+      <button id="clearBtn" class="ghost" style="flex:0 0 auto">Limpar</button>
+    </div>
+
+    <div class="hint">Endpoint de servidor configurável dentro do arquivo. Se seu backend exigir autenticação adicional, adicione no código do servidor.</div>
+
+    <div class="status" id="status">Token salvo localmente: <span class="token-mask" id="current">—</span></div>
+    <div class="small" style="margin-top:8px">Uso sugerido (no back-end): leia a key do localStorage (se optar por salvar lá) ou ofereça uma rota segura para atualizar a variável de ambiente do servidor.</div>
+  </div>
+
+  <script>
+    // --- configuração ---
+    // altere para a rota real do seu servidor que recebe { key: '...' }
+    const SERVER_ENDPOINT = '/api/gemini-key';
+    // ---------------------
+
+    const input = document.getElementById('apiKey');
+    const saveLocalBtn = document.getElementById('saveLocal');
+    const saveServerBtn = document.getElementById('saveServer');
+    const statusEl = document.getElementById('status');
+    const currentEl = document.getElementById('current');
+    const maskToggle = document.getElementById('maskToggle');
+    const copyBtn = document.getElementById('copyBtn');
+    const clearBtn = document.getElementById('clearBtn');
+
+    const STORAGE_KEY = 'gemini_api_key';
+    let masked = true;
+
+    function maskToken(t){
+      if(!t) return '—';
+      if(!masked) return t;
+      const start = t.slice(0,6);
+      const end = t.slice(-4);
+      return start + '…' + end;
+    }
+
+    function loadCurrent(){
+      const k = localStorage.getItem(STORAGE_KEY) || '';
+      currentEl.textContent = maskToken(k);
+      input.value = k;
+    }
+
+    saveLocalBtn.addEventListener('click', ()=>{
+      const v = input.value.trim();
+      if(!v){ alert('Cole a API key primeiro.'); return; }
+      localStorage.setItem(STORAGE_KEY, v);
+      loadCurrent();
+      statusEl.insertAdjacentHTML('beforeend', ' <span class="small">(salvo localmente)</span>');
+    });
+
+    saveServerBtn.addEventListener('click', async ()=>{
+      const v = input.value.trim();
+      if(!v){ alert('Cole a API key primeiro.'); return; }
+      try{
+        const res = await fetch(SERVER_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ key: v })
+        });
+        if(res.ok){
+          const j = await res.json().catch(()=>null);
+          alert('Chave enviada ao servidor com sucesso.');
+        } else {
+          const text = await res.text();
+          alert('Erro ao enviar ao servidor: ' + res.status + '\n' + text);
+        }
+      }catch(err){
+        alert('Erro de conexão: ' + err.message + '\nSe estiver usando apenas localStorage, use "Salvar no local".');
+      }
+    });
+
+    maskToggle.addEventListener('click', ()=>{
+      masked = !masked;
+      loadCurrent();
+    });
+
+    copyBtn.addEventListener('click', ()=>{
+      const v = input.value.trim();
+      if(!v){ alert('Nada para copiar.'); return; }
+      navigator.clipboard.writeText(v).then(()=>{
+        alert('Copiado para a área de transferência.');
+      }, ()=> alert('Falha ao copiar.'));
+    });
+
+    clearBtn.addEventListener('click', ()=>{
+      if(!confirm('Remover a key salva localmente?')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      input.value = '';
+      loadCurrent();
+    });
+
+    // carrega ao abrir
+    loadCurrent();
+
+    // dica: exemplo de como recuperar no backend (Node/Express):
+    // const key = req.body.key; // então valide, salve em DB ou atualize .env com cuidado
+
+  </script>
+</body>
+</html>

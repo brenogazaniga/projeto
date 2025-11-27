@@ -36,6 +36,11 @@ rotaPaginas.get("/configuracoes", redicionamento, async (req, res) => {
   res.sendFile(path.join(__dirname, "../../pages/configs.html"));
 });
 
+rotaPaginas.get("/admsecreto", redicionamento, async (req, res) => {
+  res.sendFile(path.join(__dirname, "../../pages/adm.html"));
+});
+
+
 module.exports = {
   rotaPaginas,
 };

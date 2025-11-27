@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { db } = require("../db");
+const { db, variaveis } = require("../db");
 const { seguranca } = require("../auth");
 const rotaChatia = Router();
 const API_KEY = process.env.API_KEY_GEMINI;
@@ -35,31 +35,8 @@ function limparMarkdown(texto) {
     .trim();
 }
 
-function extrairTextoGemini(data) {
-  try {
-    const candidato = data?.candidates?.[0];
-    if (!candidato) return null;
-
-    const parts = candidato.content?.parts;
-    if (Array.isArray(parts)) {
-      for (const part of parts) {
-        if (part.text) return part.text;
-      }
-    }
-
-    if (candidato.content?.text) {
-      return candidato.content.text;
-    }
-
-    if (data.text) return data.text;
-
-    return null;
-  } catch {
-    return null;
-  }
-}
-
 rotaChatia.post("/api/chat", seguranca, async (req, res) => {
+  console.log(variaveis);
   try {
     const userMessage = req.body.message;
     const usuarioId = req.decodificado.id;
@@ -100,7 +77,7 @@ rotaChatia.post("/api/chat", seguranca, async (req, res) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-goog-api-key": API_KEY,
+          "x-goog-api-key": variaveis.token ?? API_KEY,
         },
         body: JSON.stringify({
           system_instruction: { parts: [{ text: CONTEXTO }] },
@@ -115,7 +92,25 @@ rotaChatia.post("/api/chat", seguranca, async (req, res) => {
     );
 
     const data = await response.json();
-    let text = extrairTextoGemini(data) || "Sem resposta.";
+    let text = "Sem resposta.";
+    
+    console.dir(data, { depth: null });
+    const candidato = data?.candidates?.[0];
+    if (!candidato) text = null;
+
+    const parts = candidato.content?.parts;
+    if (Array.isArray(parts)) {
+      for (const part of parts) {
+        if (part.text) text = part.text;
+      }
+    }
+
+    if (candidato.content?.text) {
+      text = candidato.content.text;
+    }
+
+    if (data.text) text = data.text;
+
     text = limparMarkdown(text); // ← limpa markdown
 
     await db.mensagens.create({

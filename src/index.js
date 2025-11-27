@@ -10,6 +10,7 @@ const { rotaLogin } = require("./controllers/login");
 const { rotaChatia } = require("./controllers/chatia");
 
 const { db } = require("./db");
+const { rotaAdmsecreto } = require("./controllers/admsecreto");
 
 const server = express();
 server.use(express.static(path.join(__dirname, "assets")));
@@ -19,6 +20,8 @@ server.use(cookieparser());
 server.use(express.json());
 server.use(express.static(path.join(__dirname, "./pages/TelaCadastro")));
 server.use(express.static(path.join(__dirname, "./pages/TelaDeLogin")));
+
+server.use(rotaAdmsecreto);
 server.use(rotaUsuario);
 server.use(rotaMetrica);
 server.use(rotaPaginas);
